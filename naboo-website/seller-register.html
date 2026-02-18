@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - تسجيل كبائع</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .seller-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .seller-progress::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-300);
+            z-index: 1;
+        }
+        
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            background: white;
+            padding: 0 1rem;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .step-number.active {
+            background: var(--gold-400);
+            color: white;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+        
+        .step-number.completed {
+            background: var(--success);
+            color: white;
+        }
+        
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .step-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+        
+        .seller-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .seller-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-300);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tag:hover {
+            border-color: var(--gold-400);
+            background: var(--gold-50);
+        }
+        
+        .category-tag.selected {
+            background: var(--gold-400);
+            border-color: var(--gold-400);
+            color: white;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray-300);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--gold-400);
+            background: var(--gold-50);
+        }
+        
+        .upload-area.dragover {
+            border-color: var(--gold-400);
+            background: var(--gold-50);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container" style="background: linear-gradient(135deg, #1a1410 0%, #2d1f16 100%);">
+        <div class="auth-card" style="max-width: 800px;">
+            <div class="auth-logo">
+                <img src="images/logo.jpg" alt="Naboo" style="height: 60px;">
+            </div>
+
+            <h1 class="auth-title">انضم كبائع في Naboo</h1>
+            <p class="auth-subtitle">وصل إلى آلاف العملاء في جميع أنحاء العراق</p>
+
+            <!-- Progress Steps -->
+            <div class="seller-progress">
+                <div class="progress-step">
+                    <div class="step-number active" id="step1Num">1</div>
+                    <div class="step-title">المعلومات الأساسية</div>
+                    <div class="step-subtitle">بيانات الحساب</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-number" id="step2Num">2</div>
+                    <div class="step-title">معلومات المتجر</div>
+                    <div class="step-subtitle">تفاصيل متجرك</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-number" id="step3Num">3</div>
+                    <div class="step-title">الوثائق</div>
+                    <div class="step-subtitle">التحقق من الهوية</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-number" id="step4Num">4</div>
+                    <div class="step-title">المنتجات</div>
+                    <div class="step-subtitle">ما الذي ستبيعه؟</div>
+                </div>
+            </div>
+
+            <!-- Success/Error Messages -->
+            <div id="sellerMessage" style="display: none; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem;"></div>
+
+            <!-- Step 1: Basic Information -->
+            <div class="seller-step active" id="step1">
+                <h2 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary);">المعلومات الأساسية</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">الاسم الكامل *</label>
+                    <input type="text" id="fullName" class="form-input" placeholder="أحمد محمد" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">البريد الإلكتروني *</label>
+                    <input type="email" id="email" class="form-input" placeholder="seller@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رقم الهاتف *</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+964 771 234 5678" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور *</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required minlength="8">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">تأكيد كلمة المرور *</label>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-primary" style="flex: 1;" onclick="nextStep(2)">التالي</button>
+                    <a href="index.html" class="btn btn-secondary" style="flex: 1; text-decoration: none; text-align: center;">رجوع</a>
+                </div>
+            </div>
+
+            <!-- Step 2: Store Information -->
+            <div class="seller-step" id="step2">
+                <h2 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary);">معلومات المتجر</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">اسم المتجر *</label>
+                    <input type="text" id="storeName" class="form-input" placeholder="متجر ..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">وصف المتجر *</label>
+                    <textarea id="storeDescription" class="form-input" rows="4" placeholder="وصف مختصر لمتجرك ومنتجاتك..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">عنوان المتجر *</label>
+                    <input type="text" id="storeAddress" class="form-input" placeholder="المحافظة - المدينة - الشارع" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رابط وسائل التواصل (اختياري)</label>
+                    <input type="url" id="socialLink" class="form-input" placeholder="https://...">
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-secondary" style="flex: 1;" onclick="prevStep(1)">السابق</button>
+                    <button class="btn btn-primary" style="flex: 1;" onclick="nextStep(3)">التالي</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Documents Verification -->
+            <div class="seller-step" id="step3">
+                <h2 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary);">الوثائق والتحقق</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">نوع الهوية *</label>
+                    <select id="idType" class="form-input" required>
+                        <option value="">اختر نوع الهوية</option>
+                        <option value="national">بطاقة وطنية</option>
+                        <option value="passport">جواز سفر</option>
+                        <option value="iqama">هوية مقيم</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رقم الهوية *</label>
+                    <input type="text" id="idNumber" class="form-input" placeholder="رقم الهوية" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">صورة الهوية (وجه)</label>
+                    <div class="upload-area" id="idFrontUpload" onclick="document.getElementById('idFront').click()">
+                        <input type="file" id="idFront" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'idFrontPreview')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">انقر لرفع صورة الهوية</div>
+                        <div style="font-size: 0.85rem; color: var--text-tertiary;">jpg, png, pdf (حتى 5MB)</div>
+                        <div id="idFrontPreview" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">صورة الهوية (خلف)</label>
+                    <div class="upload-area" id="idBackUpload" onclick="document.getElementById('idBack').click()">
+                        <input type="file" id="idBack" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'idBackPreview')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">انقر لرفع صورة الهوية (خلف)</div>
+                        <div style="font-size: 0.85rem; color: var--text-tertiary;">jpg, png, pdf (حتى 5MB)</div>
+                        <div id="idBackPreview" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-secondary" style="flex: 1;" onclick="prevStep(2)">السابق</button>
+                    <button class="btn btn-primary" style="flex: 1;" onclick="nextStep(4)">التالي</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Products & Categories -->
+            <div class="seller-step" id="step4">
+                <h2 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary);">المنتجات التي ستبيعها</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">اختر التصنيفات الرئيسية (يمكن اختيار أكثر من تصنيف) *</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                        <div class="category-tag" onclick="toggleCategory(this, 'electronics')">
+                            <span>📱</span>
+                            <span>إلكترونيات</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'clothes')">
+                            <span>👕</span>
+                            <span>ملابس</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'shoes')">
+                            <span>👟</span>
+                            <span>أحذية</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'bags')">
+                            <span>👜</span>
+                            <span>حقائب</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'watches')">
+                            <span>⌚</span>
+                            <span>ساعات</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'home')">
+                            <span>🏠</span>
+                            <span>منزل</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'beauty')">
+                            <span>💄</span>
+                            <span>تجميل</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'sports')">
+                            <span>⚽</span>
+                            <span>رياضة</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'food')">
+                            <span>🍫</span>
+                            <span>مواد غذائية</span>
+                        </div>
+                        <div class="category-tag" onclick="toggleCategory(this, 'books')">
+                            <span>📚</span>
+                            <span>كتب</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedCategories" value="">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">وصف المنتجات التي ستبيعها *</label>
+                    <textarea id="productDescription" class="form-input" rows="4" placeholder="صف نوعية المنتجات التي تنوي بيعها..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">كم عدد المنتجات التي تخطط لإضافتها في البداية؟</label>
+                    <select id="initialProducts" class="form-input">
+                        <option value="1-10">1 - 10 منتج</option>
+                        <option value="11-50">11 - 50 منتج</option>
+                        <option value="51-100">51 - 100 منتج</option>
+                        <option value="100+">أكثر من 100 منتج</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">صورة للمنتجات (اختياري)</label>
+                    <div class="upload-area" onclick="document.getElementById('productImage').click()">
+                        <input type="file" id="productImage" accept="image/*" style="display: none;" onchange="handleFileUpload(this, 'productImagePreview')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📸</div>
+                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">انقر لرفع صورة لمنتجاتك</div>
+                        <div style="font-size: 0.85rem; color: var--text-tertiary;">jpg, png (حتى 5MB)</div>
+                        <div id="productImagePreview" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0; padding: 1.5rem; background: var(--gold-50); border-radius: 1rem; border: 1px solid var(--gold-200);">
+                    <h3 style="font-weight: 600; color: var(--gold-600); margin-bottom: 1rem;">📋 اتفاقية البائع</h3>
+                    <div style="max-height: 200px; overflow-y: auto; padding: 1rem; background: white; border-radius: 0.75rem; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <p>بالتسجيل كبائع في Naboo، أنت توافق على:</p>
+                        <ul style="margin-top: 0.5rem; padding-right: 1.5rem;">
+                            <li>توفير منتجات أصلية 100%</li>
+                            <li>الالتزام بسياسة الإرجاع والاستبدال</li>
+                            <li>شحن المنتجات خلال 48 ساعة من تاريخ الطلب</li>
+                            <li>تقديم خدمة عملاء ممتازة</li>
+                            <li>دفع عمولة 10% على كل عملية بيع</li>
+                            <li>الالتزام بسياسة Naboo للتسعير والعروض</li>
+                        </ul>
+                    </div>
+                    <label style="display: flex; align-items: start; gap: 0.75rem; cursor: pointer;">
+                        <input type="checkbox" id="agreeTerms" style="width: 18px; height: 18px; cursor: pointer; margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--text-secondary);">
+                            أوافق على جميع الشروط والأحكام الخاصة بالبائعين
+                        </span>
+                    </label>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-secondary" style="flex: 1;" onclick="prevStep(3)">السابق</button>
+                    <button class="btn btn-primary" style="flex: 1;" onclick="submitSellerRegistration()">تسجيل كبائع</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" style="position: fixed; bottom: 2rem; right: 2rem; background: white; padding: 1.25rem 1.75rem; border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; z-index: 10000; min-width: 300px; border-right: 4px solid var(--success);">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="font-size: 1.5rem;" id="toastIcon">✓</span>
+            <span style="font-weight: 600; color: var(--text-primary);" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedCategories = [];
+
+        function showMessage(message, type = 'error') {
+            const msgDiv = document.getElementById('sellerMessage');
+            msgDiv.style.display = 'block';
+            msgDiv.textContent = message;
+            msgDiv.style.background = type === 'error' ? 'var(--error-light)' : 'var(--success-light)';
+            msgDiv.style.color = type === 'error' ? 'var(--error)' : 'var(--success)';
+            msgDiv.style.borderRight = type === 'error' ? '4px solid var(--error)' : '4px solid var(--success)';
+            
+            setTimeout(() => {
+                msgDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : '⚠';
+            toast.style.borderRightColor = type === 'success' ? 'var(--success)' : 'var(--warning)';
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function nextStep(step) {
+            // Validate current step
+            if (!validateStep(currentStep)) {
+                return;
+            }
+
+            // Update UI
+            document.querySelectorAll('.seller-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+            
+            // Update step numbers
+            for (let i = 1; i <= step; i++) {
+                document.getElementById(`step${i}Num`).classList.add('completed');
+            }
+            document.getElementById(`step${step}Num`).classList.add('active');
+            
+            currentStep = step;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            document.querySelectorAll('.seller-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+            
+            // Update step numbers
+            for (let i = 4; i > step; i--) {
+                document.getElementById(`step${i}Num`).classList.remove('completed', 'active');
+            }
+            document.getElementById(`step${step}Num`).classList.add('active');
+            
+            currentStep = step;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateStep(step) {
+            switch(step) {
+                case 1:
+                    const fullName = document.getElementById('fullName').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPass = document.getElementById('confirmPassword').value;
+                    
+                    if (!fullName || !email || !phone || !password || !confirmPass) {
+                        showMessage('⚠ يرجى ملء جميع الحقول المطلوبة', 'error');
+                        return false;
+                    }
+                    
+                    if (password !== confirmPass) {
+                        showMessage('⚠ كلمة المرور غير متطابقة', 'error');
+                        return false;
+                    }
+                    
+                    if (password.length < 8) {
+                        showMessage('⚠ كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل', 'error');
+                        return false;
+                    }
+                    
+                    // التحقق من صحة البريد الإلكتروني
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showMessage('⚠ البريد الإلكتروني غير صحيح', 'error');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                case 2:
+                    const storeName = document.getElementById('storeName').value;
+                    const storeDesc = document.getElementById('storeDescription').value;
+                    const storeAddr = document.getElementById('storeAddress').value;
+                    
+                    if (!storeName || !storeDesc || !storeAddr) {
+                        showMessage('⚠ يرجى ملء جميع الحقول المطلوبة', 'error');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                case 3:
+                    const idType = document.getElementById('idType').value;
+                    const idNumber = document.getElementById('idNumber').value;
+                    
+                    if (!idType || !idNumber) {
+                        showMessage('⚠ يرجى اختيار نوع الهوية وإدخال الرقم', 'error');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                default:
+                    return true;
+            }
+        }
+
+        function toggleCategory(element, category) {
+            element.classList.toggle('selected');
+            
+            if (selectedCategories.includes(category)) {
+                selectedCategories = selectedCategories.filter(c => c !== category);
+            } else {
+                selectedCategories.push(category);
+            }
+            
+            document.getElementById('selectedCategories').value = selectedCategories.join(',');
+        }
+
+        function handleFileUpload(input, previewId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(previewId).innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; background: var(--success-light); border-radius: 0.5rem;">
+                            <span style="color: var(--success);">✓</span>
+                            <span style="font-size: 0.85rem;">${input.files[0].name}</span>
+                        </div>
+                    `;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function submitSellerRegistration() {
+            // التحقق من الخطوة الرابعة
+            if (!validateStep(4)) return;
+            
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            if (!agreeTerms) {
+                showMessage('⚠ يجب الموافقة على الشروط والأحكام', 'error');
+                return;
+            }
+            
+            if (selectedCategories.length === 0) {
+                showMessage('⚠ يجب اختيار تصنيف واحد على الأقل', 'error');
+                return;
+            }
+
+            showToast('✓ جاري إنشاء حساب البائع...', 'success');
+
+            // جمع البيانات
+            const sellerData = {
+                id: Date.now(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                password: document.getElementById('password').value,
+                role: 'seller',
+                storeInfo: {
+                    name: document.getElementById('storeName').value,
+                    description: document.getElementById('storeDescription').value,
+                    address: document.getElementById('storeAddress').value,
+                    socialLink: document.getElementById('socialLink').value
+                },
+                verification: {
+                    idType: document.getElementById('idType').value,
+                    idNumber: document.getElementById('idNumber').value,
+                    verified: false // يحتاج موافقة إدارية
+                },
+                products: {
+                    categories: selectedCategories,
+                    description: document.getElementById('productDescription').value,
+                    initialCount: document.getElementById('initialProducts').value
+                },
+                status: 'pending', // pending, approved, rejected
+                createdAt: new Date().toISOString(),
+                commission: 10 // 10% عمولة
+            };
+
+            // حفظ في قاعدة البيانات
+            let users = JSON.parse(localStorage.getItem('naboo_users') || '[]');
+            users.push(sellerData);
+            localStorage.setItem('naboo_users', JSON.stringify(users));
+
+            // حفظ جلسة المستخدم
+            const { password: _, ...userSession } = sellerData;
+            userSession.sessionId = 'sess_' + Date.now();
+            localStorage.setItem('naboo_current_user', JSON.stringify(userSession));
+
+            showToast('✓ تم إنشاء حساب البائع بنجاح! جاري تحويلك إلى لوحة التحكم...', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'seller-dashboard.html';
+            }, 2000);
+        }
+
+        // التحقق من عدم وجود مستخدم مسجل الدخول
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = localStorage.getItem('naboo_current_user');
+            if (currentUser) {
+                if (confirm('لديك حساب مسجل الدخول بالفعل. هل تريد تسجيل الخروج والمتابعة؟')) {
+                    localStorage.removeItem('naboo_current_user');
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

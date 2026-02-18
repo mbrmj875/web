@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - العناوين</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f5ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .addresses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: containerFade 0.6s ease;
+        }
+
+        @keyframes containerFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================
+           رأس الصفحة
+        ===================================== */
+        .addresses-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d1f16 100%);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .addresses-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .addresses-title {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .addresses-title h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .addresses-title p {
+            color: rgba(245, 240, 232, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           إحصائيات العناوين
+        ===================================== */
+        .addresses-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold-primary);
+        }
+
+        .stat-content {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================
+           شبكة العناوين
+        ===================================== */
+        .addresses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .address-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: cardFade 0.5s ease;
+        }
+
+        @keyframes cardFade {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .address-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .address-card.default {
+            border-color: var(--gold-primary);
+            background: linear-gradient(135deg, white, var(--gold-light));
+        }
+
+        .address-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gold-primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .address-type {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--gray-200);
+        }
+
+        .type-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .type-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .address-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .detail-row strong {
+            color: var(--text-primary);
+            min-width: 70px;
+        }
+
+        .address-actions {
+            display: flex;
+            gap: 0.8rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.7rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger:hover {
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        /* =====================================
+           بطاقة إضافة عنوان جديد
+        ===================================== */
+        .add-address-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 3px dashed var(--gray-300);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 300px;
+        }
+
+        .add-address-card:hover {
+            border-color: var(--gold-primary);
+            background: var(--gold-light);
+            transform: scale(1.02);
+        }
+
+        .add-icon {
+            font-size: 4rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .add-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .add-subtext {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================
+           نافذة إضافة/تعديل عنوان
+        ===================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFade 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid var(--gold-primary);
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--gray-200);
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-300);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--error);
+            color: white;
+            border-color: var(--error);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .type-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .type-option {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .type-option:hover {
+            border-color: var(--gold-primary);
+        }
+
+        .type-option.selected {
+            border-color: var(--gold-primary);
+            background: var(--gold-light);
+        }
+
+        .type-option .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-option .name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .default-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            cursor: pointer;
+        }
+
+        .default-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--gold-primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+        }
+
+        .modal-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* =====================================
+           نافذة تأكيد الحذف
+        ===================================== */
+        .confirm-modal {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .confirm-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .confirm-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .confirm-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .addresses-title h1 {
+                font-size: 2rem;
+            }
+
+            .addresses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .type-selector {
+                flex-direction: column;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="addresses-container">
+        <!-- رأس الصفحة -->
+        <div class="addresses-header">
+            <div class="addresses-title">
+                <h1>
+                    <span>📍</span>
+                    العناوين
+                </h1>
+                <p>إدارة عناوين التوصيل الخاصة بك</p>
+            </div>
+        </div>
+
+        <!-- إحصائيات العناوين -->
+        <div class="addresses-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📍</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalAddresses">0</div>
+                    <div class="stat-label">إجمالي العناوين</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏠</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="homeAddresses">0</div>
+                    <div class="stat-label">عناوين منزلية</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💼</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="workAddresses">0</div>
+                    <div class="stat-label">عناوين عمل</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شبكة العناوين -->
+        <div class="addresses-grid" id="addressesGrid"></div>
+
+        <!-- بطاقة إضافة عنوان جديد -->
+        <div class="add-address-card" onclick="openAddAddressModal()">
+            <div class="add-icon">➕</div>
+            <div class="add-text">إضافة عنوان جديد</div>
+            <div class="add-subtext">أضف عنواناً جديداً للتوصيل</div>
+        </div>
+    </div>
+
+    <!-- نافذة إضافة/تعديل عنوان -->
+    <div class="modal-overlay" id="addressModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modalTitle">
+                    <span>➕</span>
+                    إضافة عنوان جديد
+                </h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            
+            <form id="addressForm" onsubmit="saveAddress(event)">
+                <input type="hidden" id="addressId" value="">
+                
+                <div class="type-selector">
+                    <div class="type-option selected" onclick="selectType('home')" id="typeHome">
+                        <div class="icon">🏠</div>
+                        <div class="name">منزل</div>
+                    </div>
+                    <div class="type-option" onclick="selectType('work')" id="typeWork">
+                        <div class="icon">💼</div>
+                        <div class="name">عمل</div>
+                    </div>
+                    <div class="type-option" onclick="selectType('other')" id="typeOther">
+                        <div class="icon">📍</div>
+                        <div class="name">أخرى</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">اسم العنوان</label>
+                    <input type="text" class="form-input" id="addressName" placeholder="مثال: المنزل" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">المحافظة</label>
+                    <select class="form-input" id="governorate" required>
+                        <option value="">اختر المحافظة</option>
+                        <option value="بغداد">بغداد</option>
+                        <option value="البصرة">البصرة</option>
+                        <option value="نينوى">نينوى</option>
+                        <option value="أربيل">أربيل</option>
+                        <option value="النجف">النجف</option>
+                        <option value="كربلاء">كربلاء</option>
+                        <option value="دهوك">دهوك</option>
+                        <option value="السليمانية">السليمانية</option>
+                        <option value="كركوك">كركوك</option>
+                        <option value="ديالى">ديالى</option>
+                        <option value="صلاح الدين">صلاح الدين</option>
+                        <option value="بابل">بابل</option>
+                        <option value="واسط">واسط</option>
+                        <option value="ميسان">ميسان</option>
+                        <option value="ذي قار">ذي قار</option>
+                        <option value="المثنى">المثنى</option>
+                        <option value="القادسية">القادسية</option>
+                        <option value="الأنبار">الأنبار</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">المدينة/المنطقة</label>
+                    <input type="text" class="form-input" id="city" placeholder="مثال: المنصور" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">الشارع</label>
+                    <input type="text" class="form-input" id="street" placeholder="شارع الأميرات" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">رقم المبنى</label>
+                        <input type="text" class="form-input" id="building" placeholder="مثال: 15">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">رقم الشقة</label>
+                        <input type="text" class="form-input" id="apartment" placeholder="مثال: 3">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">رقم الهاتف (للتوصيل)</label>
+                    <input type="tel" class="form-input" id="phone" placeholder="+964 771 234 5678" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ملاحظات إضافية (اختياري)</label>
+                    <textarea class="form-input" id="notes" rows="2" placeholder="مثال: بجانب المدرسة، مقابل الجامع..."></textarea>
+                </div>
+
+                <label class="default-checkbox">
+                    <input type="checkbox" id="isDefault">
+                    <span>تعيين كعنوان افتراضي</span>
+                </label>
+
+                <div class="modal-actions">
+                    <button type="submit" class="modal-btn primary">
+                        <span>💾</span>
+                        حفظ العنوان
+                    </button>
+                    <button type="button" class="modal-btn" onclick="closeModal()">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الحذف -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-container confirm-modal">
+            <div class="confirm-icon">🗑️</div>
+            <h3 class="confirm-title">حذف العنوان</h3>
+            <p class="confirm-text">هل أنت متأكد من حذف هذا العنوان؟ لا يمكن التراجع عن هذا الإجراء</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="confirmDelete()">نعم، احذف</button>
+                <button class="modal-btn" onclick="closeConfirmModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // =====================================
+        // البيانات الأساسية
+        // =====================================
+        let addresses = [
+            {
+                id: 1,
+                type: 'home',
+                name: 'المنزل',
+                governorate: 'بغداد',
+                city: 'المنصور',
+                street: 'شارع الأميرات',
+                building: '15',
+                apartment: '3',
+                phone: '+964 771 234 5678',
+                notes: 'بجانب مدرسة المنصور',
+                isDefault: true
+            },
+            {
+                id: 2,
+                type: 'work',
+                name: 'العمل',
+                governorate: 'بغداد',
+                city: 'الكرادة',
+                street: 'شارع 14 رمضان',
+                building: '42',
+                phone: '+964 770 123 4567',
+                isDefault: false
+            },
+            {
+                id: 3,
+                type: 'other',
+                name: 'العائلة',
+                governorate: 'النجف',
+                city: 'الحي الصناعي',
+                street: 'شارع القدس',
+                building: '8',
+                apartment: '2',
+                phone: '+964 780 987 6543',
+                notes: 'مقابل جامع الزهراء',
+                isDefault: false
+            }
+        ];
+
+        let currentAddressId = null;
+        let addressToDelete = null;
+
+        // =====================================
+        // التهيئة
+        // =====================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAddresses();
+            updateStats();
+        });
+
+        function loadAddresses() {
+            const grid = document.getElementById('addressesGrid');
+            
+            let html = '';
+            addresses.forEach(address => {
+                const typeIcons = {
+                    'home': '🏠',
+                    'work': '💼',
+                    'other': '📍'
+                };
+                
+                const typeNames = {
+                    'home': 'منزل',
+                    'work': 'عمل',
+                    'other': 'أخرى'
+                };
+                
+                html += `
+                    <div class="address-card ${address.isDefault ? 'default' : ''}">
+                        ${address.isDefault ? '<span class="address-badge"><span>⭐</span> افتراضي</span>' : ''}
+                        <div class="address-type">
+                            <div class="type-icon">${typeIcons[address.type]}</div>
+                            <div class="type-name">${address.name} - ${typeNames[address.type]}</div>
+                        </div>
+                        
+                        <div class="address-details">
+                            <div class="detail-row">
+                                <strong>المحافظة:</strong>
+                                <span>${address.governorate}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>المنطقة:</strong>
+                                <span>${address.city}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>الشارع:</strong>
+                                <span>${address.street}</span>
+                            </div>
+                            ${address.building ? `
+                                <div class="detail-row">
+                                    <strong>المبنى:</strong>
+                                    <span>${address.building}</span>
+                                </div>
+                            ` : ''}
+                            ${address.apartment ? `
+                                <div class="detail-row">
+                                    <strong>الشقة:</strong>
+                                    <span>${address.apartment}</span>
+                                </div>
+                            ` : ''}
+                            <div class="detail-row">
+                                <strong>الهاتف:</strong>
+                                <span>${address.phone}</span>
+                            </div>
+                            ${address.notes ? `
+                                <div class="detail-row">
+                                    <strong>ملاحظات:</strong>
+                                    <span>${address.notes}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="address-actions">
+                            <button class="action-btn" onclick="editAddress(${address.id})">
+                                <span>✏️</span>
+                                تعديل
+                            </button>
+                            ${!address.isDefault ? `
+                                <button class="action-btn" onclick="setDefaultAddress(${address.id})">
+                                    <span>⭐</span>
+                                    تعيين افتراضي
+                                </button>
+                            ` : ''}
+                            <button class="action-btn danger" onclick="openConfirmModal(${address.id})">
+                                <span>🗑️</span>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            grid.innerHTML = html;
+        }
+
+        function updateStats() {
+            document.getElementById('totalAddresses').textContent = addresses.length;
+            document.getElementById('homeAddresses').textContent = addresses.filter(a => a.type === 'home').length;
+            document.getElementById('workAddresses').textContent = addresses.filter(a => a.type === 'work').length;
+        }
+
+        // =====================================
+        // إدارة نوع العنوان
+        // =====================================
+        function selectType(type) {
+            document.querySelectorAll('.type-option').forEach(opt => opt.classList.remove('selected'));
+            document.getElementById(`type${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('selected');
+        }
+
+        // =====================================
+        // فتح وإغلاق النوافذ
+        // =====================================
+        function openAddAddressModal() {
+            document.getElementById('modalTitle').innerHTML = '<span>➕</span> إضافة عنوان جديد';
+            document.getElementById('addressForm').reset();
+            document.getElementById('addressId').value = '';
+            document.querySelectorAll('.type-option').forEach(opt => opt.classList.remove('selected'));
+            document.getElementById('typeHome').classList.add('selected');
+            document.getElementById('isDefault').checked = false;
+            document.getElementById('addressModal').classList.add('active');
+        }
+
+        function editAddress(id) {
+            const address = addresses.find(a => a.id === id);
+            if (!address) return;
+            
+            document.getElementById('modalTitle').innerHTML = '<span>✏️</span> تعديل العنوان';
+            document.getElementById('addressId').value = address.id;
+            document.getElementById('addressName').value = address.name;
+            document.getElementById('governorate').value = address.governorate;
+            document.getElementById('city').value = address.city;
+            document.getElementById('street').value = address.street;
+            document.getElementById('building').value = address.building || '';
+            document.getElementById('apartment').value = address.apartment || '';
+            document.getElementById('phone').value = address.phone;
+            document.getElementById('notes').value = address.notes || '';
+            document.getElementById('isDefault').checked = address.isDefault;
+            
+            document.querySelectorAll('.type-option').forEach(opt => opt.classList.remove('selected'));
+            document.getElementById(`type${address.type.charAt(0).toUpperCase() + address.type.slice(1)}`).classList.add('selected');
+            
+            document.getElementById('addressModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('addressModal').classList.remove('active');
+        }
+
+        function openConfirmModal(id) {
+            addressToDelete = id;
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+            addressToDelete = null;
+        }
+
+        // إغلاق النوافذ عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                addressToDelete = null;
+            }
+        });
+
+        // إغلاق النوافذ بزر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                addressToDelete = null;
+            }
+        });
+
+        // =====================================
+        // حفظ العنوان
+        // =====================================
+        function saveAddress(event) {
+            event.preventDefault();
+            
+            // تحديد نوع العنوان المحدد
+            let selectedType = 'home';
+            if (document.getElementById('typeWork').classList.contains('selected')) selectedType = 'work';
+            if (document.getElementById('typeOther').classList.contains('selected')) selectedType = 'other';
+            
+            const addressData = {
+                id: document.getElementById('addressId').value || Date.now(),
+                type: selectedType,
+                name: document.getElementById('addressName').value,
+                governorate: document.getElementById('governorate').value,
+                city: document.getElementById('city').value,
+                street: document.getElementById('street').value,
+                building: document.getElementById('building').value,
+                apartment: document.getElementById('apartment').value,
+                phone: document.getElementById('phone').value,
+                notes: document.getElementById('notes').value,
+                isDefault: document.getElementById('isDefault').checked
+            };
+            
+            if (addressData.isDefault) {
+                addresses.forEach(a => a.isDefault = false);
+            }
+            
+            if (document.getElementById('addressId').value) {
+                // تعديل عنوان موجود
+                const index = addresses.findIndex(a => a.id == addressData.id);
+                if (index !== -1) {
+                    addresses[index] = addressData;
+                }
+                showToast('✓ تم تحديث العنوان بنجاح', 'success');
+            } else {
+                // إضافة عنوان جديد
+                addresses.push(addressData);
+                showToast('✓ تم إضافة العنوان بنجاح', 'success');
+            }
+            
+            loadAddresses();
+            updateStats();
+            closeModal();
+        }
+
+        // =====================================
+        // إجراءات العناوين
+        // =====================================
+        function setDefaultAddress(id) {
+            addresses.forEach(a => a.isDefault = (a.id === id));
+            loadAddresses();
+            showToast('✓ تم تعيين العنوان الافتراضي', 'success');
+        }
+
+        function confirmDelete() {
+            if (addressToDelete) {
+                addresses = addresses.filter(a => a.id !== addressToDelete);
+                loadAddresses();
+                updateStats();
+                showToast('✓ تم حذف العنوان بنجاح', 'success');
+                closeConfirmModal();
+            }
+        }
+
+        // =====================================
+        // Toast
+        // =====================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ️');
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

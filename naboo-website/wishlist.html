@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+    <title>Naboo - المفضلة</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f5ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .wishlist-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: containerFade 0.6s ease;
+        }
+
+        @keyframes containerFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================
+           رأس الصفحة
+        ===================================== */
+        .wishlist-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d1f16 100%);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .wishlist-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .wishlist-title {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .wishlist-title h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .wishlist-title p {
+            color: rgba(245, 240, 232, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           إحصائيات المفضلة
+        ===================================== */
+        .wishlist-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold-primary);
+        }
+
+        .stat-content {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================
+           شبكة المنتجات
+        ===================================== */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .wishlist-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: itemFade 0.5s ease;
+        }
+
+        @keyframes itemFade {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .wishlist-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bronze);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 1;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .item-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .wishlist-item:hover .item-image {
+            transform: scale(1.05);
+        }
+
+        .item-info {
+            padding: 1.5rem;
+        }
+
+        .item-category {
+            color: var(--gold-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .item-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .stars {
+            color: var(--gold-primary);
+            font-size: 1rem;
+        }
+
+        .rating-count {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .item-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .item-price span {
+            font-size: 0.9rem;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.danger:hover {
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        /* =====================================
+           حالة عدم وجود منتجات
+        ===================================== */
+        .empty-wishlist {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 30px;
+            border: 2px dashed var(--gray-300);
+        }
+
+        .empty-icon {
+            font-size: 6rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .empty-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .shop-now-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .shop-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* =====================================
+           خيارات العرض
+        ===================================== */
+        .wishlist-controls {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .view-btn:hover,
+        .view-btn.active {
+            border-color: var(--gold-primary);
+            background: var(--gold-light);
+            color: var(--gold-primary);
+        }
+
+        .sort-select {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 40px;
+            background: white;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+
+        .sort-select:hover,
+        .sort-select:focus {
+            border-color: var(--gold-primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        /* =====================================
+           عرض القائمة
+        ===================================== */
+        .wishlist-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .list-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .list-item:hover {
+            border-color: var(--gold-primary);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .list-image {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .list-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .list-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .list-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+        }
+
+        .list-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* =====================================
+           نافذة التأكيد
+        ===================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFade 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            position: relative;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid var(--gold-primary);
+            text-align: center;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.confirm {
+            background: var(--error);
+            color: white;
+            border: none;
+        }
+
+        .modal-btn.confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .modal-btn.cancel:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .wishlist-title h1 {
+                font-size: 2rem;
+            }
+
+            .wishlist-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .view-options {
+                justify-content: center;
+            }
+
+            .sort-select {
+                width: 100%;
+            }
+
+            .list-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .list-image {
+                margin: 0 auto;
+            }
+
+            .list-actions {
+                justify-content: center;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wishlist-container">
+        <!-- رأس الصفحة -->
+        <div class="wishlist-header">
+            <div class="wishlist-title">
+                <h1>
+                    <span>❤️</span>
+                    المفضلة
+                </h1>
+                <p>جميع منتجاتك المفضلة في مكان واحد</p>
+            </div>
+        </div>
+
+        <!-- إحصائيات المفضلة -->
+        <div class="wishlist-stats">
+            <div class="stat-card">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalItems">0</div>
+                    <div class="stat-label">منتجات في المفضلة</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalValue">0</div>
+                    <div class="stat-label">القيمة الإجمالية</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏷️</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalCategories">0</div>
+                    <div class="stat-label">تصنيفات مختلفة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- خيارات العرض -->
+        <div class="wishlist-controls">
+            <div class="view-options">
+                <button class="view-btn active" onclick="setViewMode('grid')" title="عرض شبكي">
+                    <span>🔲</span>
+                </button>
+                <button class="view-btn" onclick="setViewMode('list')" title="عرض قائمة">
+                    <span>📋</span>
+                </button>
+            </div>
+            <select class="sort-select" id="sortSelect" onchange="sortWishlist()">
+                <option value="default">الترتيب الافتراضي</option>
+                <option value="name-asc">الاسم (أ - ي)</option>
+                <option value="name-desc">الاسم (ي - أ)</option>
+                <option value="price-asc">السعر (الأقل أولاً)</option>
+                <option value="price-desc">السعر (الأعلى أولاً)</option>
+                <option value="date-desc">الأحدث أولاً</option>
+                <option value="date-asc">الأقدم أولاً</option>
+            </select>
+        </div>
+
+        <!-- شبكة المنتجات -->
+        <div class="wishlist-grid" id="wishlistGrid"></div>
+
+        <!-- قائمة المنتجات (مخفية افتراضياً) -->
+        <div class="wishlist-list" id="wishlistList" style="display: none;"></div>
+
+        <!-- حالة عدم وجود منتجات -->
+        <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+            <div class="empty-icon">💔</div>
+            <h2 class="empty-title">المفضلة فارغة</h2>
+            <p class="empty-text">لم تقم بإضافة أي منتج إلى المفضلة بعد</p>
+            <a href="products.html" class="shop-now-btn">
+                <span>🛍️</span>
+                استكشف المنتجات
+            </a>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الحذف -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-container">
+            <div class="modal-icon">🗑️</div>
+            <h3 class="modal-title">إزالة من المفضلة</h3>
+            <p class="modal-text">هل أنت متأكد من إزالة هذا المنتج من المفضلة؟</p>
+            <div class="modal-actions">
+                <button class="modal-btn confirm" onclick="confirmRemove()">نعم، إزالة</button>
+                <button class="modal-btn cancel" onclick="closeModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // =====================================
+        // البيانات الأساسية
+        // =====================================
+        let wishlist = [
+            {
+                id: 1,
+                name: 'حذاء رياضي فاخر',
+                category: 'أحذية',
+                price: 125000,
+                icon: '👟',
+                rating: 5,
+                reviews: 245,
+                badge: 'جديد',
+                date: '2026-02-15'
+            },
+            {
+                id: 2,
+                name: 'ساعة ذكية احترافية',
+                category: 'ساعات',
+                price: 350000,
+                icon: '⌚',
+                rating: 5,
+                reviews: 512,
+                badge: 'الأكثر مبيعاً',
+                date: '2026-02-14'
+            },
+            {
+                id: 3,
+                name: 'حقيبة جلدية فاخرة',
+                category: 'حقائب',
+                price: 200000,
+                icon: '👜',
+                rating: 4,
+                reviews: 189,
+                badge: 'خصم 30%',
+                date: '2026-02-13'
+            },
+            {
+                id: 4,
+                name: 'سماعات لاسلكية',
+                category: 'إلكترونيات',
+                price: 150000,
+                icon: '🎧',
+                rating: 4,
+                reviews: 276,
+                date: '2026-02-12'
+            },
+            {
+                id: 5,
+                name: 'نظارة شمسية عصرية',
+                category: 'إكسسوارات',
+                price: 65000,
+                icon: '🕶️',
+                rating: 5,
+                reviews: 158,
+                badge: 'خصم 50%',
+                date: '2026-02-11'
+            },
+            {
+                id: 6,
+                name: 'حقيبة لابتوب احترافية',
+                category: 'حقائب',
+                price: 180000,
+                icon: '💼',
+                rating: 5,
+                reviews: 423,
+                date: '2026-02-10'
+            }
+        ];
+
+        let currentView = 'grid';
+        let itemToRemove = null;
+
+        // =====================================
+        // التهيئة
+        // =====================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadWishlist();
+            updateStats();
+        });
+
+        function loadWishlist() {
+            const grid = document.getElementById('wishlistGrid');
+            const list = document.getElementById('wishlistList');
+            const empty = document.getElementById('emptyWishlist');
+            
+            if (wishlist.length === 0) {
+                grid.style.display = 'none';
+                list.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+            
+            empty.style.display = 'none';
+            
+            if (currentView === 'grid') {
+                grid.style.display = 'grid';
+                list.style.display = 'none';
+                renderGridView();
+            } else {
+                grid.style.display = 'none';
+                list.style.display = 'flex';
+                renderListView();
+            }
+        }
+
+        function renderGridView() {
+            const grid = document.getElementById('wishlistGrid');
+            
+            let html = '';
+            wishlist.forEach(item => {
+                html += `
+                    <div class="wishlist-item">
+                        ${item.badge ? `<span class="item-badge">${item.badge}</span>` : ''}
+                        <div class="item-image">${item.icon}</div>
+                        <div class="item-info">
+                            <div class="item-category">${item.category}</div>
+                            <h3 class="item-name">${item.name}</h3>
+                            <div class="item-rating">
+                                <span class="stars">${'★'.repeat(item.rating)}${'☆'.repeat(5-item.rating)}</span>
+                                <span class="rating-count">(${item.reviews})</span>
+                            </div>
+                            <div class="item-price">
+                                ${item.price.toLocaleString('ar-IQ')} <span>د.ع</span>
+                            </div>
+                            <div class="item-actions">
+                                <button class="action-btn primary" onclick="addToCart(${item.id})">
+                                    <span>🛒</span>
+                                    أضف للسلة
+                                </button>
+                                <button class="action-btn danger" onclick="openConfirmModal(${item.id})">
+                                    <span>🗑️</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            grid.innerHTML = html;
+        }
+
+        function renderListView() {
+            const list = document.getElementById('wishlistList');
+            
+            let html = '';
+            wishlist.forEach(item => {
+                html += `
+                    <div class="list-item">
+                        <div class="list-image">${item.icon}</div>
+                        <div class="list-info">
+                            <h3>${item.name}</h3>
+                            <p>${item.category} • ${item.rating} ★ (${item.reviews} تقييم)</p>
+                            <div class="list-price">${item.price.toLocaleString('ar-IQ')} د.ع</div>
+                        </div>
+                        <div class="list-actions">
+                            <button class="action-btn primary" onclick="addToCart(${item.id})">
+                                🛒
+                            </button>
+                            <button class="action-btn danger" onclick="openConfirmModal(${item.id})">
+                                🗑️
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            list.innerHTML = html;
+        }
+
+        function updateStats() {
+            document.getElementById('totalItems').textContent = wishlist.length;
+            
+            const totalValue = wishlist.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('totalValue').textContent = totalValue.toLocaleString('ar-IQ');
+            
+            const categories = new Set(wishlist.map(item => item.category)).size;
+            document.getElementById('totalCategories').textContent = categories;
+        }
+
+        // =====================================
+        // خيارات العرض والترتيب
+        // =====================================
+        function setViewMode(mode) {
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            currentView = mode;
+            loadWishlist();
+        }
+
+        function sortWishlist() {
+            const sortBy = document.getElementById('sortSelect').value;
+            
+            switch(sortBy) {
+                case 'name-asc':
+                    wishlist.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'name-desc':
+                    wishlist.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'price-asc':
+                    wishlist.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    wishlist.sort((a, b) => b.price - a.price);
+                    break;
+                case 'date-desc':
+                    wishlist.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'date-asc':
+                    wishlist.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                default:
+                    wishlist.sort((a, b) => a.id - b.id);
+            }
+            
+            loadWishlist();
+        }
+
+        // =====================================
+        // إجراءات المنتجات
+        // =====================================
+        function addToCart(productId) {
+            const product = wishlist.find(p => p.id === productId);
+            if (product) {
+                showToast(`✓ تمت إضافة ${product.name} إلى السلة`, 'success');
+            }
+        }
+
+        function openConfirmModal(productId) {
+            itemToRemove = productId;
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function confirmRemove() {
+            if (itemToRemove) {
+                wishlist = wishlist.filter(item => item.id !== itemToRemove);
+                loadWishlist();
+                updateStats();
+                showToast('✓ تمت إزالة المنتج من المفضلة', 'success');
+                closeModal();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+            itemToRemove = null;
+        }
+
+        // إغلاق النافذة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                itemToRemove = null;
+            }
+        });
+
+        // إغلاق النافذة بزر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                itemToRemove = null;
+            }
+        });
+
+        // =====================================
+        // Toast
+        // =====================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ️');
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

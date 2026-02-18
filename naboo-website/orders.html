@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - طلباتي</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f5ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .orders-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: containerFade 0.6s ease;
+        }
+
+        @keyframes containerFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================
+           رأس الصفحة
+        ===================================== */
+        .orders-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d1f16 100%);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .orders-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .orders-title {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .orders-title h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .orders-title p {
+            color: rgba(245, 240, 232, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           إحصائيات الطلبات
+        ===================================== */
+        .orders-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            animation: cardPop 0.5s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold-primary);
+        }
+
+        .stat-content {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================
+           فلتر الطلبات
+        ===================================== */
+        .orders-filter {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 40px;
+            background: white;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border-color: transparent;
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1.2rem 0.8rem 3rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 40px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: var(--text-tertiary);
+        }
+
+        /* =====================================
+           قائمة الطلبات
+        ===================================== */
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            animation: cardSlide 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-card:hover {
+            transform: translateX(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .order-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold-primary), var(--bronze));
+        }
+
+        @keyframes cardSlide {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--gray-200);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-id {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .order-id h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .order-badge {
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .badge-delivered {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            color: #10B981;
+        }
+
+        .badge-shipped {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-primary);
+        }
+
+        .badge-processing {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            color: #3B82F6;
+        }
+
+        .badge-pending {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            color: #F59E0B;
+        }
+
+        .badge-cancelled {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            color: #EF4444;
+        }
+
+        .order-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =====================================
+           منتجات الطلب
+        ===================================== */
+        .order-products {
+            margin-bottom: 1rem;
+        }
+
+        .order-product {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+        }
+
+        .order-product:hover {
+            background: var(--gray-50);
+            border-radius: 10px;
+        }
+
+        .order-product:last-child {
+            border-bottom: none;
+        }
+
+        .product-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .product-details h4 {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .product-details p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+        }
+
+        .product-quantity {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* =====================================
+           تذييل الطلب
+        ===================================== */
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--gray-200);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-total {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .total-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .total-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 30px;
+            background: white;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* =====================================
+           حالة عدم وجود طلبات
+        ===================================== */
+        .empty-orders {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 30px;
+            border: 2px dashed var(--gray-300);
+        }
+
+        .empty-icon {
+            font-size: 6rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .empty-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .shop-now-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .shop-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* =====================================
+           نافذة تفاصيل الطلب
+        ===================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFade 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid var(--gold-primary);
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--gray-200);
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-300);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--error);
+            color: white;
+            border-color: var(--error);
+            transform: rotate(90deg);
+        }
+
+        .tracking-timeline {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tracking-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .tracking-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--gray-300);
+            z-index: 2;
+        }
+
+        .step-icon.completed {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .step-icon.active {
+            background: var(--gold-primary);
+            color: white;
+            border-color: var(--gold-primary);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px dashed var(--gray-200);
+        }
+
+        .tracking-step:last-child .step-content {
+            border-bottom: none;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* =====================================
+           تقييم المنتج
+        ===================================== */
+        .rating-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin: 1rem 0;
+            direction: ltr;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .star:hover,
+        .star.active {
+            color: var(--gold-primary);
+            transform: scale(1.2);
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .orders-title h1 {
+                font-size: 2rem;
+            }
+
+            .orders-filter {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-tabs {
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-product {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .product-image {
+                margin: 0 auto;
+            }
+
+            .order-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="orders-container">
+        <!-- رأس الصفحة -->
+        <div class="orders-header">
+            <div class="orders-title">
+                <h1>
+                    <span>📦</span>
+                    طلباتي
+                </h1>
+                <p>تتبع و إدارة جميع طلباتك في مكان واحد</p>
+            </div>
+        </div>
+
+        <!-- إحصائيات الطلبات -->
+        <div class="orders-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalOrders">0</div>
+                    <div class="stat-label">إجمالي الطلبات</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="pendingOrders">0</div>
+                    <div class="stat-label">قيد الانتظار</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🚚</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="shippedOrders">0</div>
+                    <div class="stat-label">قيد الشحن</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="deliveredOrders">0</div>
+                    <div class="stat-label">مكتملة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- فلتر الطلبات -->
+        <div class="orders-filter">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterOrders('all')">
+                    <span>📋</span>
+                    الكل
+                </button>
+                <button class="filter-tab" onclick="filterOrders('pending')">
+                    <span>⏳</span>
+                    قيد الانتظار
+                </button>
+                <button class="filter-tab" onclick="filterOrders('processing')">
+                    <span>⚙️</span>
+                    قيد المعالجة
+                </button>
+                <button class="filter-tab" onclick="filterOrders('shipped')">
+                    <span>🚚</span>
+                    تم الشحن
+                </button>
+                <button class="filter-tab" onclick="filterOrders('delivered')">
+                    <span>✅</span>
+                    مكتملة
+                </button>
+                <button class="filter-tab" onclick="filterOrders('cancelled')">
+                    <span>❌</span>
+                    ملغية
+                </button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="بحث عن طلب..." onkeyup="searchOrders()">
+            </div>
+        </div>
+
+        <!-- قائمة الطلبات -->
+        <div class="orders-list" id="ordersList"></div>
+
+        <!-- حالة عدم وجود طلبات -->
+        <div class="empty-orders" id="emptyOrders" style="display: none;">
+            <div class="empty-icon">📭</div>
+            <h2 class="empty-title">لا توجد طلبات</h2>
+            <p class="empty-text">لم تقم بطلب أي منتج بعد. ابدأ التسوق الآن!</p>
+            <a href="products.html" class="shop-now-btn">
+                <span>🛍️</span>
+                تسوق الآن
+            </a>
+        </div>
+    </div>
+
+    <!-- نافذة تفاصيل الطلب -->
+    <div class="modal-overlay" id="orderDetailsModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>
+                    <span>📋</span>
+                    تفاصيل الطلب
+                </h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            
+            <div id="orderDetailsContent"></div>
+        </div>
+    </div>
+
+    <!-- نافذة تقييم المنتج -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>
+                    <span>⭐</span>
+                    تقييم المنتج
+                </h2>
+                <button class="modal-close" onclick="closeReviewModal()">✕</button>
+            </div>
+            
+            <div id="reviewContent"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // =====================================
+        // البيانات الأساسية
+        // =====================================
+        let orders = [
+            {
+                id: 'ORD-001',
+                date: '2026-02-15',
+                status: 'delivered',
+                items: [
+                    { id: 1, name: 'حذاء رياضي فاخر', price: 125000, quantity: 2, icon: '👟' },
+                    { id: 2, name: 'جوارب رياضية', price: 25000, quantity: 3, icon: '🧦' }
+                ],
+                total: 275000,
+                shipping: 15000,
+                address: 'بغداد، المنصور، شارع الأميرات',
+                payment: 'نقداً عند الاستلام',
+                tracking: [
+                    { status: 'تم الطلب', date: '2026-02-15 10:30', completed: true },
+                    { status: 'قيد المعالجة', date: '2026-02-16 09:15', completed: true },
+                    { status: 'تم الشحن', date: '2026-02-17 14:20', completed: true },
+                    { status: 'تم التوصيل', date: '2026-02-18 11:45', completed: true }
+                ]
+            },
+            {
+                id: 'ORD-002',
+                date: '2026-02-14',
+                status: 'shipped',
+                items: [
+                    { id: 3, name: 'ساعة ذكية احترافية', price: 350000, quantity: 1, icon: '⌚' }
+                ],
+                total: 350000,
+                shipping: 0,
+                address: 'البصرة، العشار',
+                payment: 'بطاقة ائتمان',
+                tracking: [
+                    { status: 'تم الطلب', date: '2026-02-14 15:20', completed: true },
+                    { status: 'قيد المعالجة', date: '2026-02-15 11:30', completed: true },
+                    { status: 'تم الشحن', date: '2026-02-16 09:45', completed: true },
+                    { status: 'تم التوصيل', date: '', completed: false }
+                ]
+            },
+            {
+                id: 'ORD-003',
+                date: '2026-02-13',
+                status: 'processing',
+                items: [
+                    { id: 4, name: 'حقيبة جلدية فاخرة', price: 200000, quantity: 1, icon: '👜' },
+                    { id: 5, name: 'محفظة جلدية', price: 85000, quantity: 1, icon: '👝' }
+                ],
+                total: 285000,
+                shipping: 15000,
+                address: 'أربيل، شارع 60',
+                payment: 'نقداً عند الاستلام',
+                tracking: [
+                    { status: 'تم الطلب', date: '2026-02-13 12:15', completed: true },
+                    { status: 'قيد المعالجة', date: '2026-02-14 10:30', completed: true },
+                    { status: 'تم الشحن', date: '', completed: false },
+                    { status: 'تم التوصيل', date: '', completed: false }
+                ]
+            },
+            {
+                id: 'ORD-004',
+                date: '2026-02-12',
+                status: 'pending',
+                items: [
+                    { id: 6, name: 'سماعات لاسلكية', price: 150000, quantity: 1, icon: '🎧' }
+                ],
+                total: 150000,
+                shipping: 15000,
+                address: 'الموصل، الدواسة',
+                payment: 'نقداً عند الاستلام',
+                tracking: [
+                    { status: 'تم الطلب', date: '2026-02-12 16:45', completed: true },
+                    { status: 'قيد المعالجة', date: '', completed: false },
+                    { status: 'تم الشحن', date: '', completed: false },
+                    { status: 'تم التوصيل', date: '', completed: false }
+                ]
+            },
+            {
+                id: 'ORD-005',
+                date: '2026-02-10',
+                status: 'cancelled',
+                items: [
+                    { id: 7, name: 'قميص كلاسيكي', price: 85000, quantity: 2, icon: '👕' }
+                ],
+                total: 170000,
+                shipping: 15000,
+                address: 'النجف، الحي الصناعي',
+                payment: 'بطاقة ائتمان',
+                tracking: [
+                    { status: 'تم الطلب', date: '2026-02-10 09:30', completed: true },
+                    { status: 'تم الإلغاء', date: '2026-02-11 14:20', completed: true }
+                ]
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentOrderId = null;
+        let currentProductId = null;
+
+        // =====================================
+        // التهيئة
+        // =====================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrders();
+            updateStats();
+        });
+
+        function loadOrders() {
+            const ordersList = document.getElementById('ordersList');
+            const emptyOrders = document.getElementById('emptyOrders');
+            
+            let filteredOrders = orders;
+            
+            if (currentFilter !== 'all') {
+                filteredOrders = orders.filter(o => o.status === currentFilter);
+            }
+            
+            if (filteredOrders.length === 0) {
+                ordersList.innerHTML = '';
+                emptyOrders.style.display = 'block';
+                return;
+            }
+            
+            emptyOrders.style.display = 'none';
+            
+            let html = '';
+            filteredOrders.forEach(order => {
+                const statusClass = {
+                    'delivered': 'badge-delivered',
+                    'shipped': 'badge-shipped',
+                    'processing': 'badge-processing',
+                    'pending': 'badge-pending',
+                    'cancelled': 'badge-cancelled'
+                }[order.status];
+                
+                const statusText = {
+                    'delivered': 'تم التوصيل',
+                    'shipped': 'تم الشحن',
+                    'processing': 'قيد المعالجة',
+                    'pending': 'قيد الانتظار',
+                    'cancelled': 'ملغي'
+                }[order.status];
+                
+                html += `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <h3>طلب رقم ${order.id}</h3>
+                                <span class="order-badge ${statusClass}">${statusText}</span>
+                            </div>
+                            <div class="order-date">
+                                <span>📅</span>
+                                ${order.date}
+                            </div>
+                        </div>
+                        
+                        <div class="order-products">
+                            ${order.items.map(item => `
+                                <div class="order-product">
+                                    <div class="product-image">${item.icon}</div>
+                                    <div class="product-details">
+                                        <h4>${item.name}</h4>
+                                        <p>الكمية: ${item.quantity}</p>
+                                    </div>
+                                    <div class="product-price">${(item.price * item.quantity).toLocaleString('ar-IQ')} د.ع</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="order-footer">
+                            <div class="order-total">
+                                <span class="total-label">الإجمالي:</span>
+                                <span class="total-value">${order.total.toLocaleString('ar-IQ')} د.ع</span>
+                            </div>
+                            <div class="order-actions">
+                                ${order.status === 'delivered' ? `
+                                    <button class="action-btn" onclick="openReviewModal('${order.id}')">
+                                        <span>⭐</span>
+                                        تقييم
+                                    </button>
+                                ` : ''}
+                                <button class="action-btn" onclick="viewOrderDetails('${order.id}')">
+                                    <span>👁️</span>
+                                    التفاصيل
+                                </button>
+                                ${order.status === 'pending' ? `
+                                    <button class="action-btn" onclick="cancelOrder('${order.id}')">
+                                        <span>❌</span>
+                                        إلغاء
+                                    </button>
+                                ` : ''}
+                                ${order.status === 'delivered' ? `
+                                    <button class="action-btn primary" onclick="reorder('${order.id}')">
+                                        <span>🔄</span>
+                                        إعادة الطلب
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            ordersList.innerHTML = html;
+        }
+
+        function updateStats() {
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('pendingOrders').textContent = orders.filter(o => o.status === 'pending').length;
+            document.getElementById('shippedOrders').textContent = orders.filter(o => o.status === 'shipped').length;
+            document.getElementById('deliveredOrders').textContent = orders.filter(o => o.status === 'delivered').length;
+        }
+
+        // =====================================
+        // فلترة وبحث
+        // =====================================
+        function filterOrders(status) {
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            currentFilter = status;
+            loadOrders();
+        }
+
+        function searchOrders() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = orders.filter(o => 
+                o.id.toLowerCase().includes(searchTerm) ||
+                o.items.some(item => item.name.toLowerCase().includes(searchTerm))
+            );
+            
+            // عرض النتائج المفلترة
+            displayFilteredOrders(filtered);
+        }
+
+        function displayFilteredOrders(filteredOrders) {
+            const ordersList = document.getElementById('ordersList');
+            const emptyOrders = document.getElementById('emptyOrders');
+            
+            if (filteredOrders.length === 0) {
+                ordersList.innerHTML = '';
+                emptyOrders.style.display = 'block';
+                return;
+            }
+            
+            emptyOrders.style.display = 'none';
+            
+            let html = '';
+            filteredOrders.forEach(order => {
+                const statusClass = {
+                    'delivered': 'badge-delivered',
+                    'shipped': 'badge-shipped',
+                    'processing': 'badge-processing',
+                    'pending': 'badge-pending',
+                    'cancelled': 'badge-cancelled'
+                }[order.status];
+                
+                const statusText = {
+                    'delivered': 'تم التوصيل',
+                    'shipped': 'تم الشحن',
+                    'processing': 'قيد المعالجة',
+                    'pending': 'قيد الانتظار',
+                    'cancelled': 'ملغي'
+                }[order.status];
+                
+                html += `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <h3>طلب رقم ${order.id}</h3>
+                                <span class="order-badge ${statusClass}">${statusText}</span>
+                            </div>
+                            <div class="order-date">📅 ${order.date}</div>
+                        </div>
+                        
+                        <div class="order-products">
+                            ${order.items.map(item => `
+                                <div class="order-product">
+                                    <div class="product-image">${item.icon}</div>
+                                    <div class="product-details">
+                                        <h4>${item.name}</h4>
+                                        <p>الكمية: ${item.quantity}</p>
+                                    </div>
+                                    <div class="product-price">${(item.price * item.quantity).toLocaleString('ar-IQ')} د.ع</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="order-footer">
+                            <div class="order-total">
+                                <span class="total-label">الإجمالي:</span>
+                                <span class="total-value">${order.total.toLocaleString('ar-IQ')} د.ع</span>
+                            </div>
+                            <button class="action-btn" onclick="viewOrderDetails('${order.id}')">
+                                <span>👁️</span>
+                                التفاصيل
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            ordersList.innerHTML = html;
+        }
+
+        // =====================================
+        // إجراءات الطلبات
+        // =====================================
+        function viewOrderDetails(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+            
+            currentOrderId = orderId;
+            
+            const statusClass = {
+                'delivered': 'badge-delivered',
+                'shipped': 'badge-shipped',
+                'processing': 'badge-processing',
+                'pending': 'badge-pending',
+                'cancelled': 'badge-cancelled'
+            }[order.status];
+            
+            const statusText = {
+                'delivered': 'تم التوصيل',
+                'shipped': 'تم الشحن',
+                'processing': 'قيد المعالجة',
+                'pending': 'قيد الانتظار',
+                'cancelled': 'ملغي'
+            }[order.status];
+            
+            let trackingHTML = '';
+            if (order.tracking) {
+                trackingHTML = `
+                    <div style="margin: 2rem 0;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">📦 حالة الطلب</h3>
+                        ${order.tracking.map(step => `
+                            <div class="tracking-step">
+                                <div class="step-icon ${step.completed ? 'completed' : ''}">
+                                    ${step.completed ? '✓' : '○'}
+                                </div>
+                                <div class="step-content">
+                                    <div class="step-title">${step.status}</div>
+                                    <div class="step-date">${step.date || 'قيد الانتظار'}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            document.getElementById('orderDetailsContent').innerHTML = `
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">معلومات الطلب</h3>
+                    <div style="background: var(--gray-50); padding: 1rem; border-radius: 15px;">
+                        <p><strong>رقم الطلب:</strong> ${order.id}</p>
+                        <p><strong>التاريخ:</strong> ${order.date}</p>
+                        <p><strong>الحالة:</strong> <span class="order-badge ${statusClass}">${statusText}</span></p>
+                        <p><strong>عنوان التوصيل:</strong> ${order.address}</p>
+                        <p><strong>طريقة الدفع:</strong> ${order.payment}</p>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">المنتجات</h3>
+                    ${order.items.map(item => `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-200);">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 2rem;">${item.icon}</span>
+                                <div>
+                                    <div style="font-weight: 700;">${item.name}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">الكمية: ${item.quantity}</div>
+                                </div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--gold-primary);">${(item.price * item.quantity).toLocaleString('ar-IQ')} د.ع</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; padding: 0.5rem 0;">
+                        <span>المجموع الفرعي:</span>
+                        <span>${(order.total - order.shipping).toLocaleString('ar-IQ')} د.ع</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; padding: 0.5rem 0;">
+                        <span>الشحن:</span>
+                        <span>${order.shipping === 0 ? 'مجاني' : order.shipping.toLocaleString('ar-IQ') + ' د.ع'}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; padding: 1rem 0; border-top: 2px solid var(--gray-200);">
+                        <span>الإجمالي:</span>
+                        <span style="color: var(--gold-primary);">${order.total.toLocaleString('ar-IQ')} د.ع</span>
+                    </div>
+                </div>
+                
+                ${trackingHTML}
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="action-btn primary" style="flex: 1;" onclick="closeModal()">
+                        إغلاق
+                    </button>
+                    ${order.status === 'delivered' ? `
+                        <button class="action-btn" style="flex: 1;" onclick="reorder('${order.id}')">
+                            <span>🔄</span>
+                            إعادة الطلب
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+            
+            document.getElementById('orderDetailsModal').classList.add('active');
+        }
+
+        function openReviewModal(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+            
+            currentOrderId = orderId;
+            
+            let productsHTML = '';
+            order.items.forEach(item => {
+                productsHTML += `
+                    <div style="margin-bottom: 2rem; padding: 1rem; background: var(--gray-50); border-radius: 15px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <span style="font-size: 2rem;">${item.icon}</span>
+                            <div>
+                                <div style="font-weight: 700;">${item.name}</div>
+                            </div>
+                        </div>
+                        <div class="rating-stars" id="rating-${item.id}">
+                            ${[1,2,3,4,5].map(star => `
+                                <span class="star" onclick="rateProduct(${item.id}, ${star})">★</span>
+                            `).join('')}
+                        </div>
+                        <textarea class="form-input" placeholder="اكتب تقييمك هنا..." rows="3" style="margin-top: 1rem;"></textarea>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('reviewContent').innerHTML = `
+                <div style="margin-bottom: 2rem;">
+                    <p>قيم المنتجات التي اشتريتها من طلب ${orderId}</p>
+                </div>
+                ${productsHTML}
+                <div style="display: flex; gap: 1rem;">
+                    <button class="action-btn primary" style="flex: 1;" onclick="submitReview()">
+                        إرسال التقييم
+                    </button>
+                    <button class="action-btn" style="flex: 1;" onclick="closeReviewModal()">
+                        إلغاء
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('reviewModal').classList.add('active');
+        }
+
+        function rateProduct(productId, rating) {
+            const stars = document.querySelectorAll(`#rating-${productId} .star`);
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            currentProductId = productId;
+        }
+
+        function submitReview() {
+            showToast('✓ تم إرسال تقييمك بنجاح', 'success');
+            closeReviewModal();
+        }
+
+        function cancelOrder(orderId) {
+            if (confirm('هل أنت متأكد من إلغاء هذا الطلب؟')) {
+                const order = orders.find(o => o.id === orderId);
+                if (order) {
+                    order.status = 'cancelled';
+                    order.tracking.push({
+                        status: 'تم الإلغاء',
+                        date: new Date().toISOString().split('T')[0],
+                        completed: true
+                    });
+                    loadOrders();
+                    updateStats();
+                    showToast('✓ تم إلغاء الطلب بنجاح', 'success');
+                }
+            }
+        }
+
+        function reorder(orderId) {
+            showToast('✓ تم إضافة جميع المنتجات إلى السلة', 'success');
+        }
+
+        // =====================================
+        // إغلاق النوافذ
+        // =====================================
+        function closeModal() {
+            document.getElementById('orderDetailsModal').classList.remove('active');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+
+        // إغلاق النوافذ عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        });
+
+        // إغلاق النوافذ بزر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+
+        // =====================================
+        // Toast
+        // =====================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ️');
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

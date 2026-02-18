@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - سلة المشتريات</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="logo.jpg" alt="Naboo Logo" class="logo-full">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">التصنيفات</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <a href="cart.html" class="icon-btn">
+                    🛒
+                    <span class="cart-count" id="cartCount" style="display: none;">0</span>
+                </a>
+                <a href="login.html" class="icon-btn">👤</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            <span>سلة المشتريات</span>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <div id="cartContent" style="min-height: 60vh;">
+        <!-- Will be filled by JavaScript -->
+    </div>
+
+    <!-- Empty Cart -->
+    <div id="emptyCart" style="display: none; text-align: center; padding: 6rem 2rem;">
+        <div style="font-size: 10rem; margin-bottom: 2rem;">🛒</div>
+        <h2 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 700;">سلتك فارغة!</h2>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 3rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+            ابدأ بإضافة منتجاتك المفضلة واستمتع بتجربة تسوق رائعة
+        </p>
+        <a href="products.html" class="btn btn-primary" style="display: inline-flex; padding: 1rem 3rem;">
+            <span>🛍️</span>
+            <span>تسوق الآن</span>
+        </a>
+    </div>
+
+    <!-- Recommended Products -->
+    <div class="section" id="recommendedSection" style="display: none;">
+        <div class="container">
+            <h2 style="font-family: 'Tajawal', sans-serif; font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: var(--text-primary);">
+                قد يعجبك أيضاً
+            </h2>
+            <div class="grid" id="recommendedGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+                <!-- Will be filled by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" style="position: fixed; bottom: 2rem; right: 2rem; background: white; padding: 1.25rem 1.75rem; border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; z-index: 10000; min-width: 300px; border-right: 4px solid var(--success);">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="font-size: 1.5rem;" id="toastIcon">✓</span>
+            <span style="font-weight: 600; color: var(--text-primary);" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html>

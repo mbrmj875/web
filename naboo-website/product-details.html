@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - تفاصيل المنتج</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.svg" alt="Naboo Logo" class="logo-full">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">التصنيفات</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <a href="cart.html" class="icon-btn">
+                    🛒
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+                <button class="icon-btn">👤</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container" id="breadcrumb"></div>
+    </div>
+
+    <!-- Product Details -->
+    <section class="section">
+        <div class="container">
+            <div id="productDetails"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘</a>
+                    <a href="#" class="social-btn">📷</a>
+                    <a href="#" class="social-btn">🐦</a>
+                    <a href="#" class="social-btn">📺</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        const products = [
+            { id: 1, name: 'حذاء رياضي فاخر', category: 'shoes', categoryAr: 'أحذية رياضية', price: 125000, icon: '👟', rating: 5, reviews: 245, badge: 'جديد', description: 'حذاء رياضي فاخر مصنوع من أفضل المواد لراحة قصوى طوال اليوم. مناسب للرياضة والاستخدام اليومي.' },
+            { id: 2, name: 'حقيبة جلدية فاخرة', category: 'bags', categoryAr: 'حقائب', price: 200000, icon: '👜', rating: 4, reviews: 189, badge: 'خصم 30%', description: 'حقيبة جلدية فاخرة بتصميم عصري أنيق. مثالية للاستخدام اليومي والمناسبات الخاصة.' },
+            { id: 3, name: 'ساعة ذكية احترافية', category: 'watches', categoryAr: 'ساعات', price: 350000, icon: '⌚', rating: 5, reviews: 512, description: 'ساعة ذكية بأحدث التقنيات لمتابعة نشاطك اليومي وصحتك. شاشة AMOLED عالية الدقة.' },
+            { id: 4, name: 'قميص كلاسيكي', category: 'clothes', categoryAr: 'ملابس', price: 85000, icon: '👕', rating: 5, reviews: 387, badge: 'الأكثر مبيعاً', description: 'قميص كلاسيكي بقصة أنيقة من القطن الفاخر. مناسب للعمل والمناسبات الرسمية.' }
+        ];
+
+        const productId = parseInt(getURLParameter('id'));
+        const product = products.find(p => p.id === productId);
+
+        if (!product) {
+            window.location.href = 'products.html';
+        } else {
+            // Render breadcrumb
+            document.getElementById('breadcrumb').innerHTML = `
+                <a href="index.html">الرئيسية</a>
+                <span>›</span>
+                <a href="products.html">المنتجات</a>
+                <span>›</span>
+                <span>${product.name}</span>
+            `;
+
+            // Render product details
+            document.getElementById('productDetails').innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                    <!-- Product Image -->
+                    <div style="background: linear-gradient(135deg, #f5f0e8, #e8dcc8); border-radius: 20px; padding: 4rem; text-align: center; position: relative;">
+                        ${product.badge ? `<span style="position: absolute; top: 20px; right: 20px; background: var(--bronze); color: white; padding: 0.7rem 1.5rem; border-radius: 25px; font-weight: 600;">${product.badge}</span>` : ''}
+                        <div style="font-size: 15rem; line-height: 1;">${product.icon}</div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div>
+                        <div style="color: var(--gold-dark); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">${product.categoryAr}</div>
+                        
+                        <h1 style="font-size: 3rem; color: var(--text-dark); margin-bottom: 1rem;">${product.name}</h1>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <span style="color: var(--gold-primary); font-size: 1.5rem;">${'★'.repeat(product.rating)}${'☆'.repeat(5-product.rating)}</span>
+                            <span style="color: #666;">(${product.reviews} تقييم)</span>
+                        </div>
+
+                        <div style="font-size: 3rem; color: var(--text-dark); font-weight: 700; margin-bottom: 2rem;">
+                            ${product.price.toLocaleString('ar-IQ')} <span style="font-size: 1.5rem; color: var(--gold-dark);">د.ع</span>
+                        </div>
+
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: #666; margin-bottom: 3rem;">${product.description}</p>
+
+                        <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem;">
+                            <button onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})" style="flex: 2; padding: 1.2rem; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); color: white; border: none; border-radius: 50px; font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                                🛒 أضف إلى السلة
+                            </button>
+                            <button style="flex: 1; padding: 1.2rem; background: transparent; color: var(--gold-primary); border: 2px solid var(--gold-primary); border-radius: 50px; font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                                ❤️
+                            </button>
+                        </div>
+
+                        <div style="background: #f8f8f8; padding: 2rem; border-radius: 15px;">
+                            <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-dark);">معلومات الشحن والتوصيل</h3>
+                            <ul style="list-style: none; line-height: 2;">
+                                <li>✓ توصيل مجاني للطلبات فوق 200,000 د.ع</li>
+                                <li>✓ توصيل خلال 2-5 أيام عمل</li>
+                                <li>✓ إمكانية الاستلام من نقاط Naboo</li>
+                                <li>✓ الدفع نقداً عند الاستلام</li>
+                                <li>✓ سياسة إرجاع مرنة خلال 14 يوم</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Products -->
+                <div style="margin-top: 5rem;">
+                    <h2 style="font-family: 'Scheherazade New', serif; font-size: 2.5rem; color: var(--text-dark); text-align: center; margin-bottom: 3rem;">منتجات ذات صلة</h2>
+                    <div class="grid grid-4">
+                        ${products.filter(p => p.id !== product.id && p.category === product.category).slice(0, 4).map(p => `
+                            <div class="product-card" onclick="window.location.href='product-details.html?id=${p.id}'">
+                                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                                <div class="product-image">${p.icon}</div>
+                                <div class="product-info">
+                                    <div class="product-category">${p.categoryAr}</div>
+                                    <h3 class="product-name">${p.name}</h3>
+                                    <div class="product-rating">
+                                        <span class="stars">${'★'.repeat(p.rating)}${'☆'.repeat(5-p.rating)}</span>
+                                        <span class="rating-count">(${p.reviews} تقييم)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-price">
+                                            ${p.price.toLocaleString('ar-IQ')} <span class="currency">د.ع</span>
+                                        </div>
+                                        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})">أضف للسلة</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

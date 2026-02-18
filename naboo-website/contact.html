@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - اتصل بنا</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.svg" alt="Naboo Logo" class="logo-full">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">التصنيفات</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <a href="cart.html" class="icon-btn">
+                    🛒
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+                <button class="icon-btn">👤</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            <span>اتصل بنا</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="section" style="padding: 3rem 2rem; background: linear-gradient(135deg, #1a1410 0%, #3d2817 50%, #1a1410 100%); text-align: center;">
+        <div class="container">
+            <h1 style="font-family: 'Scheherazade New', serif; font-size: 4rem; color: var(--gold-primary); margin-bottom: 1rem;">تواصل معنا</h1>
+            <p style="font-size: 1.3rem; color: var(--gold-light);">نحن هنا للإجابة على استفساراتك ومساعدتك</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <!-- Contact Form -->
+                <div>
+                    <h2 style="font-family: 'Scheherazade New', serif; font-size: 2.5rem; color: var(--text-dark); margin-bottom: 2rem;">أرسل لنا رسالة</h2>
+                    
+                    <form id="contactForm" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">الاسم الكامل *</label>
+                            <input type="text" required style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">البريد الإلكتروني *</label>
+                            <input type="email" required style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">رقم الهاتف *</label>
+                            <input type="tel" required style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">الموضوع *</label>
+                            <select required style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; background: white; cursor: pointer;">
+                                <option value="">اختر الموضوع</option>
+                                <option value="order">استفسار عن طلب</option>
+                                <option value="product">استفسار عن منتج</option>
+                                <option value="shipping">الشحن والتوصيل</option>
+                                <option value="return">الإرجاع والاستبدال</option>
+                                <option value="payment">طرق الدفع</option>
+                                <option value="complaint">شكوى</option>
+                                <option value="suggestion">اقتراح</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">الرسالة *</label>
+                            <textarea required rows="5" style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; font-family: 'Tajawal', sans-serif; resize: vertical; transition: all 0.3s ease;"></textarea>
+                        </div>
+                        
+                        <button type="submit" style="width: 100%; padding: 1.2rem; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); color: white; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 style="font-family: 'Scheherazade New', serif; font-size: 2.5rem; color: var(--text-dark); margin-bottom: 2rem;">معلومات التواصل</h2>
+                    
+                    <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 2rem;">
+                        <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+                            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📞</div>
+                                <div>
+                                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem;">الهاتف</h3>
+                                    <p style="color: #666; direction: ltr; text-align: right;">+964 771 234 5678</p>
+                                    <p style="color: #666; direction: ltr; text-align: right;">+964 750 123 4567</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+                            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">✉️</div>
+                                <div>
+                                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem;">البريد الإلكتروني</h3>
+                                    <p style="color: #666;">info@naboo.com</p>
+                                    <p style="color: #666;">support@naboo.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+                            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📍</div>
+                                <div>
+                                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem;">العنوان</h3>
+                                    <p style="color: #666;">بغداد، المنصور</p>
+                                    <p style="color: #666;">شارع الأميرات</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold-primary), var(--bronze)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🕐</div>
+                                <div>
+                                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 0.5rem;">ساعات العمل</h3>
+                                    <p style="color: #666;">السبت - الخميس: 9:00 ص - 9:00 م</p>
+                                    <p style="color: #666;">الجمعة: مغلق</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                        <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 1.5rem;">تابعنا على</h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="#" style="flex: 1; min-width: 120px; padding: 1rem; background: linear-gradient(135deg, #3b5998, #2d4373); color: white; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; transition: all 0.3s ease;">
+                                📘 Facebook
+                            </a>
+                            <a href="#" style="flex: 1; min-width: 120px; padding: 1rem; background: linear-gradient(135deg, #E1306C, #C13584); color: white; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; transition: all 0.3s ease;">
+                                📷 Instagram
+                            </a>
+                            <a href="#" style="flex: 1; min-width: 120px; padding: 1rem; background: linear-gradient(135deg, #1DA1F2, #0d8bd9); color: white; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; transition: all 0.3s ease;">
+                                🐦 Twitter
+                            </a>
+                            <a href="#" style="flex: 1; min-width: 120px; padding: 1rem; background: linear-gradient(135deg, #FF0000, #cc0000); color: white; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; transition: all 0.3s ease;">
+                                📺 YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background: linear-gradient(to bottom, var(--cream), #f8f5ef);">
+        <div class="container">
+            <h2 style="font-family: 'Scheherazade New', serif; font-size: 3rem; color: var(--text-dark); text-align: center; margin-bottom: 3rem;">الأسئلة الشائعة</h2>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 1rem;">كيف يمكنني تتبع طلبي؟</h3>
+                    <p style="color: #666; line-height: 1.8;">بمجرد شحن طلبك، سنرسل لك رقم التتبع عبر البريد الإلكتروني أو الرسائل النصية. يمكنك استخدام هذا الرقم لتتبع طلبك في قسم "تتبع الطلب" على موقعنا.</p>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 1rem;">ما هي طرق الدفع المتاحة؟</h3>
+                    <p style="color: #666; line-height: 1.8;">نوفر عدة طرق للدفع: الدفع نقداً عند الاستلام، الدفع ببطاقات الائتمان والخصم، والمحافظ الإلكترونية.</p>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 1rem;">كم تستغرق عملية التوصيل؟</h3>
+                    <p style="color: #666; line-height: 1.8;">عادةً ما يستغرق التوصيل من 2 إلى 5 أيام عمل حسب موقعك. نوفر أيضاً خدمة التوصيل السريع خلال 24 ساعة في بعض المناطق.</p>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 1rem;">ما هي سياسة الإرجاع والاستبدال؟</h3>
+                    <p style="color: #666; line-height: 1.8;">يمكنك إرجاع أو استبدال المنتجات خلال 14 يوم من تاريخ الاستلام، شريطة أن تكون في حالتها الأصلية مع التغليف. لمزيد من التفاصيل، يرجى زيارة صفحة سياسة الإرجاع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘</a>
+                    <a href="#" class="social-btn">📷</a>
+                    <a href="#" class="social-btn">🐦</a>
+                    <a href="#" class="social-btn">📺</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('✓ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً');
+            this.reset();
+        });
+
+        // Focus effect for form inputs
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--gold-primary)';
+                this.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.1)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = '#eee';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

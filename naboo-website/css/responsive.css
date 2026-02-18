@@ -1,0 +1,1085 @@
+/* ============================================================
+   responsive.css - تصميم متجاوب احترافي لجميع الأجهزة
+   يدعم جميع أحجام الشاشات من 320px إلى 4K
+   ============================================================ */
+
+/* ============================================================
+   BREAKPOINTS الرئيسية
+   ============================================================ */
+:root {
+    /* Breakpoints دقيقة */
+    --xs: 320px;    /* هواتف صغيرة جداً (iPhone SE, older phones) */
+    --sm: 375px;    /* هواتف صغيرة (iPhone 6/7/8) */
+    --md: 425px;    /* هواتف متوسطة (iPhone Plus) */
+    --lg: 768px;    /* هواتف كبيرة / تابلت صغير (iPad Mini) */
+    --xl: 1024px;   /* تابلت كبير (iPad Air, iPad Pro 9.7) */
+    --2xl: 1280px;  /* لابتوب صغير / تابلت أفقي */
+    --3xl: 1440px;  /* لابتوب متوسط */
+    --4xl: 1680px;  /* لابتوب كبير */
+    --5xl: 1920px;  /* شاشات Full HD */
+    --6xl: 2560px;  /* شاشات 2K */
+    --7xl: 3840px;  /* شاشات 4K */
+}
+
+/* ============================================================
+   RESET و BASE STYLES للشاشات الصغيرة
+   ============================================================ */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+html {
+    font-size: 16px; /* Base size */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* ============================================================
+   شاشات صغيرة جداً (XS) - 320px وأقل
+   iPhone SE, iPhone 5, وأجهزة صغيرة
+   ============================================================ */
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 14px;
+    }
+
+    /* الهيدر */
+    .main-header__inner {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .logo-block img {
+        height: 35px;
+    }
+
+    .logo-name {
+        font-size: 1rem;
+        display: none;
+    }
+
+    .logo-sub {
+        display: none;
+    }
+
+    .hbtn {
+        padding: 0.25rem;
+    }
+
+    .hbtn__icon {
+        font-size: 1.2rem;
+    }
+
+    .hbtn-login {
+        padding: 0.4rem 0.6rem !important;
+    }
+
+    .hbtn-login span:last-child {
+        display: none;
+    }
+
+    .hbtn__badge {
+        width: 14px;
+        height: 14px;
+        font-size: 0.5rem;
+        top: -4px;
+        left: -4px;
+    }
+
+    /* قائمة المستخدم */
+    .user-menu-btn {
+        padding: 0.2rem 0.4rem;
+    }
+
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .user-dropdown {
+        width: 240px;
+        left: auto;
+        right: 0;
+    }
+
+    .dropdown-header {
+        padding: 1rem;
+    }
+
+    .dropdown-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .dropdown-name {
+        font-size: 0.8rem;
+    }
+
+    .dropdown-email {
+        font-size: 0.65rem;
+    }
+
+    .dropdown-item {
+        padding: 0.6rem 1rem;
+    }
+
+    .dropdown-icon {
+        font-size: 1.1rem;
+        width: 24px;
+    }
+
+    .dropdown-text {
+        font-size: 0.8rem;
+    }
+
+    /* بانر */
+    .banner-section {
+        padding: 1rem 0;
+    }
+
+    .banner-section__inner {
+        padding: 0 0.5rem;
+    }
+
+    .banner-slide {
+        border-radius: 12px;
+    }
+
+    .banner-slide__content {
+        padding: 0.5rem;
+    }
+
+    .banner-slide__badge {
+        font-size: 0.5rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .banner-slide__title {
+        font-size: 0.8rem;
+    }
+
+    .banner-slide__sub {
+        font-size: 0.6rem;
+    }
+
+    .banner-slide__btn {
+        font-size: 0.55rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .banner-arrow {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .banner-arrow--prev {
+        right: -5px;
+    }
+
+    .banner-arrow--next {
+        left: -5px;
+    }
+
+    /* منتجات */
+    .products-section {
+        padding: 1.5rem 0;
+    }
+
+    .section-hd h2 {
+        font-size: 1.3rem;
+    }
+
+    .section-hd a {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .product-card .product-image {
+        height: 140px;
+        font-size: 2.5rem;
+    }
+
+    .product-info {
+        padding: 0.6rem;
+    }
+
+    .product-category {
+        font-size: 0.55rem;
+    }
+
+    .product-name {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .product-rating {
+        font-size: 0.65rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .add-to-cart {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    /* تذييل */
+    .footer {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .footer-section h3 {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+
+    .social-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    /* دعم عائم */
+    .support-fab {
+        bottom: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .support-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .support-btn__icon {
+        font-size: 1rem;
+    }
+
+    .support-dd {
+        width: 220px;
+        left: 0;
+    }
+}
+
+/* ============================================================
+   هواتف صغيرة (SM) - 321px - 375px
+   iPhone 6, 7, 8, X
+   ============================================================ */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+    html {
+        font-size: 14.5px;
+    }
+
+    .logo-block img {
+        height: 40px;
+    }
+
+    .logo-name {
+        font-size: 1.1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-menu-btn {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .product-card .product-image {
+        height: 130px;
+    }
+}
+
+/* ============================================================
+   هواتف متوسطة (MD) - 376px - 425px
+   iPhone 11, 12, 13 Pro, Samsung Galaxy
+   ============================================================ */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+    html {
+        font-size: 15px;
+    }
+
+    .logo-name {
+        font-size: 1.2rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-menu-btn {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .product-card .product-image {
+        height: 140px;
+    }
+}
+
+/* ============================================================
+   هواتف كبيرة (LG) - 426px - 768px
+   iPhone Plus, Samsung Note, Google Pixel
+   ============================================================ */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+    html {
+        font-size: 15.5px;
+    }
+
+    .logo-name {
+        font-size: 1.3rem;
+    }
+
+    .logo-sub {
+        font-size: 0.5rem;
+    }
+
+    .header-search {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-menu-btn {
+        padding: 0.3rem 0.8rem;
+    }
+
+    .user-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .user-info {
+        display: flex;
+    }
+
+    .user-name {
+        font-size: 0.8rem;
+        max-width: 70px;
+    }
+
+    .user-role {
+        font-size: 0.55rem;
+    }
+
+    .product-card .product-image {
+        height: 150px;
+    }
+
+    /* لوحة تحكم البائع */
+    .dashboard-sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        grid-column: 1;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   تابلت صغير (XL) - 769px - 1024px
+   iPad Mini, iPad Air (عمودي)
+   ============================================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+
+    .header-search input {
+        width: 250px;
+    }
+
+    .header-search input:focus {
+        width: 280px;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .user-menu-btn {
+        min-width: 120px;
+    }
+
+    .user-name {
+        font-size: 0.8rem;
+    }
+
+    .product-card .product-image {
+        height: 180px;
+    }
+
+    /* لوحة تحكم البائع */
+    .dashboard-sidebar {
+        width: 240px;
+    }
+
+    .dashboard-main {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    /* ملف شخصي */
+    .profile-tabs {
+        flex-wrap: wrap;
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* إعدادات */
+    .settings-layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+/* ============================================================
+   تابلت كبير / لابتوب صغير (2XL) - 1025px - 1280px
+   iPad Pro (أفقي), MacBook Air
+   ============================================================ */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    html {
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 200px;
+    }
+
+    /* لوحة تحكم البائع */
+    .dashboard-sidebar {
+        width: 260px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .charts-section {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* ============================================================
+   لابتوب متوسط (3XL) - 1281px - 1440px
+   MacBook Pro, PC قياسي
+   ============================================================ */
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 210px;
+    }
+}
+
+/* ============================================================
+   لابتوب كبير (4XL) - 1441px - 1680px
+   شاشات كبيرة
+   ============================================================ */
+@media screen and (min-width: 1441px) and (max-width: 1680px) {
+    .container {
+        max-width: 1300px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 220px;
+    }
+}
+
+/* ============================================================
+   شاشات Full HD (5XL) - 1681px - 1920px
+   ============================================================ */
+@media screen and (min-width: 1681px) and (max-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 230px;
+    }
+}
+
+/* ============================================================
+   شاشات 2K (6XL) - 1921px - 2560px
+   ============================================================ */
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1800px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 250px;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================================
+   شاشات 4K (7XL) - 2561px فأكثر
+   ============================================================ */
+@media screen and (min-width: 2561px) {
+    html {
+        font-size: 20px;
+    }
+
+    .container {
+        max-width: 2200px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 280px;
+    }
+
+    .product-name {
+        font-size: 1.3rem;
+    }
+
+    .product-price {
+        font-size: 1.6rem;
+    }
+}
+
+/* ============================================================
+   تحسينات خاصة لشاشات الهواتف في الوضع الأفقي
+   ============================================================ */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .main-header {
+        padding: 0.5rem 0;
+    }
+
+    .logo-block img {
+        height: 35px;
+    }
+
+    .logo-name {
+        display: none;
+    }
+
+    .hamburger {
+        width: 36px;
+        height: 36px;
+    }
+
+    .header-search {
+        display: block;
+    }
+
+    .header-search input {
+        width: 200px;
+        padding: 0.4rem 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-card .product-image {
+        height: 120px;
+    }
+
+    .footer {
+        padding: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* نوافذ منبثقة */
+    .modal-container {
+        width: 80%;
+        max-height: 80vh;
+    }
+
+    /* لوحة تحكم البائع */
+    .dashboard-sidebar {
+        display: block;
+        width: 200px;
+    }
+
+    .dashboard-main {
+        margin-right: 200px;
+    }
+}
+
+/* ============================================================
+   تحسينات خاصة للتابلت في الوضع الأفقي
+   ============================================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .dashboard-sidebar {
+        width: 220px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================================
+   تحسينات للشاشات ذات الكثافة العالية (Retina)
+   ============================================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .product-image img,
+    .profile-avatar img,
+    .list-image img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* ============================================================
+   تحسينات للوضع الليلي (Dark Mode)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1a1a;
+    }
+
+    .product-card,
+    .stat-card,
+    .chart-card,
+    .order-card,
+    .review-card,
+    .wishlist-item,
+    .address-card,
+    .settings-card {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .product-name,
+    .stat-value,
+    .chart-title,
+    .order-info h4,
+    .reviewer-details h4,
+    .wishlist-title {
+        color: #f5f5f5;
+    }
+
+    .product-category,
+    .stat-label,
+    .chart-period,
+    .order-date,
+    .review-date,
+    .wishlist-category {
+        color: #b0b0b0;
+    }
+
+    .modal-container {
+        background: #2d2d2d;
+    }
+
+    .form-input {
+        background: #404040;
+        color: #f5f5f5;
+        border-color: #595959;
+    }
+
+    .form-input::placeholder {
+        color: #808080;
+    }
+
+    .btn-secondary {
+        background: #404040;
+        color: #f5f5f5;
+        border-color: #595959;
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--gold-primary);
+        color: var(--gold-primary);
+    }
+}
+
+/* ============================================================
+   تحسينات للطباعة
+   ============================================================ */
+@media print {
+    .header,
+    .footer,
+    .support-fab,
+    .modal-overlay,
+    .drawer,
+    .drawer-overlay,
+    .hamburger,
+    .user-menu-btn,
+    .action-btn,
+    .add-product-btn,
+    .filter-tabs,
+    .search-box,
+    .banner-section,
+    .support-fab {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        padding: 1cm;
+        font-size: 12pt;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .product-card,
+    .order-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        margin-bottom: 1cm;
+    }
+
+    * {
+        color: black !important;
+        background: white !important;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+}
+
+/* ============================================================
+   كلاسات مساعدة للتحكم في الظهور حسب الجهاز
+   ============================================================ */
+.hide-on-mobile {
+    display: block;
+}
+
+.hide-on-tablet {
+    display: block;
+}
+
+.hide-on-desktop {
+    display: none;
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+.show-on-tablet {
+    display: none;
+}
+
+.show-on-desktop {
+    display: block;
+}
+
+/* هواتف */
+@media screen and (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .show-on-mobile {
+        display: block;
+    }
+}
+
+/* تابلت */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .hide-on-tablet {
+        display: none;
+    }
+
+    .show-on-tablet {
+        display: block;
+    }
+}
+
+/* ديسكتوب */
+@media screen and (min-width: 1025px) {
+    .hide-on-desktop {
+        display: none;
+    }
+
+    .show-on-desktop {
+        display: block;
+    }
+}
+
+/* ============================================================
+   تحسينات للأجهزة التي تعمل باللمس
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* زيادة مساحة النقر للأزرار */
+    .btn,
+    .action-btn,
+    .add-product-btn,
+    .filter-tab,
+    .nav-links a,
+    .dropdown-item,
+    .product-card,
+    .hbtn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* إزالة تأثيرات hover */
+    .product-card:hover {
+        transform: none;
+    }
+
+    .btn-primary:hover {
+        transform: none;
+    }
+
+    .dropdown-item:hover {
+        transform: none;
+    }
+
+    /* إضافة تأثيرات للضغط */
+    .btn:active,
+    .action-btn:active,
+    .product-card:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* ============================================================
+   تحسينات للشاشات الصغيرة جداً (أقل من 280px)
+   ============================================================ */
+@media screen and (max-width: 280px) {
+    html {
+        font-size: 12px;
+    }
+
+    .logo-block img {
+        height: 30px;
+    }
+
+    .hbtn {
+        padding: 0.2rem;
+    }
+
+    .hbtn__icon {
+        font-size: 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card .product-image {
+        height: 120px;
+        font-size: 2rem;
+    }
+
+    .user-dropdown {
+        width: 200px;
+    }
+
+    .dropdown-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dropdown-avatar {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ============================================================
+   تحسينات للشاشات الطويلة (مثل iPhone X وما بعده)
+   ============================================================ */
+@media screen and (min-aspect-ratio: 13/16) and (max-width: 768px) {
+    .main-header {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .support-fab {
+        bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    .modal-container {
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* ============================================================
+   تحسينات إضافية للتأكد من التجاوب
+   ============================================================ */
+
+/* التأكد من أن جميع الصور متجاوبة */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* تحسين الجداول */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+}
+
+/* تحسين صناديق الإدخال على الهواتف */
+input, select, textarea, button {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* منع تجاوز المحتوى */
+.container, .section, .wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* تحسينات للأجهزة الصغيرة جداً */
+@media screen and (max-width: 320px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    .btn { padding: 0.5rem 1rem; }
+}
+
+/* تحسينات للشاشات الكبيرة */
+@media screen and (min-width: 1920px) {
+    .container { max-width: 1600px; }
+    html { font-size: 18px; }
+}

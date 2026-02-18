@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+    <title>Naboo - الإعدادات</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f5ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .settings-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: containerFade 0.6s ease;
+        }
+
+        @keyframes containerFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================
+           رأس الصفحة
+        ===================================== */
+        .settings-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d1f16 100%);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .settings-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .settings-title {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .settings-title h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .settings-title p {
+            color: rgba(245, 240, 232, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           شريط التنقل الجانبي
+        ===================================== */
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        .settings-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .settings-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .settings-nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .settings-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .settings-nav-link:hover {
+            background: var(--gray-100);
+            color: var(--gold-primary);
+        }
+
+        .settings-nav-link.active {
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            color: var(--gold-primary);
+            font-weight: 700;
+            border-right: 4px solid var(--gold-primary);
+        }
+
+        .settings-nav-icon {
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+        }
+
+        /* =====================================
+           المحتوى الرئيسي
+        ===================================== */
+        .settings-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-200);
+        }
+
+        .settings-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .settings-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =====================================
+           بطاقات الإعدادات
+        ===================================== */
+        .settings-card {
+            background: var(--gray-50);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .settings-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 span {
+            font-size: 1.3rem;
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* =====================================
+           نموذج الإعدادات
+        ===================================== */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* =====================================
+           خيارات التبديل (Toggle)
+        ===================================== */
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .toggle-item:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-info h4 {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .toggle-info p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray-300);
+            transition: .4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--gold-primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        /* =====================================
+           أزرار الإجراءات
+        ===================================== */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: white;
+            color: var(--error);
+            padding: 1rem 2rem;
+            border: 2px solid var(--error);
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-danger:hover {
+            background: var(--error);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* =====================================
+           جلسات نشطة
+        ===================================== */
+        .session-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--gray-200);
+        }
+
+        .session-device {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .session-info {
+            flex: 1;
+        }
+
+        .session-info h4 {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .session-info p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .session-current {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .session-terminate {
+            color: var(--error);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .session-terminate:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* =====================================
+           طرق الدفع
+        ===================================== */
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--gray-200);
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .payment-details {
+            flex: 1;
+        }
+
+        .payment-details h4 {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .payment-details p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .payment-default {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* =====================================
+           العناوين
+        ===================================== */
+        .address-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .address-summary.default {
+            border-color: var(--gold-primary);
+            background: var(--gold-light);
+        }
+
+        .address-type {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .address-type-icon {
+            font-size: 1.5rem;
+        }
+
+        .address-type-text h4 {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .address-type-text p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* =====================================
+           نافذة تأكيد الحذف
+        ===================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFade 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            position: relative;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid var(--gold-primary);
+            text-align: center;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.confirm {
+            background: var(--error);
+            color: white;
+            border: none;
+        }
+
+        .modal-btn.confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .modal-btn.cancel:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .settings-title h1 {
+                font-size: 2rem;
+            }
+
+            .settings-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <!-- رأس الصفحة -->
+        <div class="settings-header">
+            <div class="settings-title">
+                <h1>
+                    <span>⚙️</span>
+                    الإعدادات
+                </h1>
+                <p>خصص تجربتك وتحكم في إعدادات حسابك</p>
+            </div>
+        </div>
+
+        <!-- تخطيط الإعدادات -->
+        <div class="settings-layout">
+            <!-- الشريط الجانبي -->
+            <aside class="settings-sidebar">
+                <ul class="settings-nav">
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link active" onclick="switchSettingsTab('account')">
+                            <span class="settings-nav-icon">👤</span>
+                            <span>معلومات الحساب</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('notifications')">
+                            <span class="settings-nav-icon">🔔</span>
+                            <span>الإشعارات</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('privacy')">
+                            <span class="settings-nav-icon">🔒</span>
+                            <span>الخصوصية والأمان</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('payments')">
+                            <span class="settings-nav-icon">💳</span>
+                            <span>طرق الدفع</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('addresses')">
+                            <span class="settings-nav-icon">📍</span>
+                            <span>العناوين</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('language')">
+                            <span class="settings-nav-icon">🌐</span>
+                            <span>اللغة والعملة</span>
+                        </div>
+                    </li>
+                    <li class="settings-nav-item">
+                        <div class="settings-nav-link" onclick="switchSettingsTab('danger')">
+                            <span class="settings-nav-icon">⚠️</span>
+                            <span>المنطقة الخطرة</span>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- المحتوى الرئيسي -->
+            <main class="settings-content">
+                <!-- قسم معلومات الحساب -->
+                <div class="settings-section active" id="accountSection">
+                    <h2 class="section-title">
+                        <span>👤</span>
+                        معلومات الحساب
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>📋</span>
+                                البيانات الشخصية
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="accountForm" onsubmit="updateAccount(event)">
+                                <div class="form-group">
+                                    <label class="form-label">الاسم الكامل</label>
+                                    <input type="text" class="form-input" id="fullName" value="أحمد محمد" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">البريد الإلكتروني</label>
+                                    <input type="email" class="form-input" id="email" value="ahmed@example.com" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">رقم الهاتف</label>
+                                    <input type="tel" class="form-input" id="phone" value="+964 771 234 5678" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">تاريخ الميلاد</label>
+                                    <input type="date" class="form-input" id="birthdate" value="1990-01-01">
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button type="submit" class="btn-primary">
+                                        <span>💾</span>
+                                        حفظ التغييرات
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>🔑</span>
+                                تغيير كلمة المرور
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="passwordForm" onsubmit="changePassword(event)">
+                                <div class="form-group">
+                                    <label class="form-label">كلمة المرور الحالية</label>
+                                    <input type="password" class="form-input" id="currentPassword" required>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">كلمة المرور الجديدة</label>
+                                        <input type="password" class="form-input" id="newPassword" required minlength="8">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">تأكيد كلمة المرور</label>
+                                        <input type="password" class="form-input" id="confirmPassword" required>
+                                    </div>
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button type="submit" class="btn-primary">
+                                        <span>🔄</span>
+                                        تحديث كلمة المرور
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الإشعارات -->
+                <div class="settings-section" id="notificationsSection">
+                    <h2 class="section-title">
+                        <span>🔔</span>
+                        الإشعارات
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>📱</span>
+                                إعدادات الإشعارات
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>إشعارات الطلبات</h4>
+                                    <p>استلام إشعارات عند تحديث حالة الطلب</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="orderNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>إشعارات العروض</h4>
+                                    <p>استلام عروض وخصومات حصرية</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="promoNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>إشعارات البريد الإلكتروني</h4>
+                                    <p>استلام تحديثات عبر البريد الإلكتروني</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="emailNotifications">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>إشعارات SMS</h4>
+                                    <p>استلام رسائل نصية للطلبات المهمة</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="smsNotifications">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-primary" onclick="saveNotificationSettings()">
+                                    <span>💾</span>
+                                    حفظ الإعدادات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الخصوصية والأمان -->
+                <div class="settings-section" id="privacySection">
+                    <h2 class="section-title">
+                        <span>🔒</span>
+                        الخصوصية والأمان
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>🛡️</span>
+                                إعدادات الأمان
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>المصادقة الثنائية</h4>
+                                    <p>تفعيل طبقة أمان إضافية عند تسجيل الدخول</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="twoFactorAuth">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>التحقق من الأجهزة الجديدة</h4>
+                                    <p>طلب تأكيد عند تسجيل الدخول من جهاز جديد</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="deviceVerification" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <h4>إظهار الصورة الشخصية</h4>
+                                    <p>جعل صورتك الشخصية عامة للجميع</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="publicAvatar" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>📱</span>
+                                الجلسات النشطة
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="session-item">
+                                <div class="session-device">💻</div>
+                                <div class="session-info">
+                                    <h4>جهازك الحالي - Windows</h4>
+                                    <p>بغداد، العراق • 192.168.1.100 • آخر نشاط الآن</p>
+                                </div>
+                                <span class="session-current">حالي</span>
+                            </div>
+
+                            <div class="session-item">
+                                <div class="session-device">📱</div>
+                                <div class="session-info">
+                                    <h4>iPhone 14 Pro</h4>
+                                    <p>بغداد، العراق • آخر نشاط قبل ساعتين</p>
+                                </div>
+                                <span class="session-terminate" onclick="terminateSession()" title="إنهاء الجلسة">✕</span>
+                            </div>
+
+                            <div class="session-item">
+                                <div class="session-device">📱</div>
+                                <div class="session-info">
+                                    <h4>iPad Pro</h4>
+                                    <p>أربيل، العراق • آخر نشاط قبل 3 أيام</p>
+                                </div>
+                                <span class="session-terminate" onclick="terminateSession()" title="إنهاء الجلسة">✕</span>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-secondary" onclick="terminateAllSessions()">
+                                    <span>🚪</span>
+                                    إنهاء جميع الجلسات الأخرى
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم طرق الدفع -->
+                <div class="settings-section" id="paymentsSection">
+                    <h2 class="section-title">
+                        <span>💳</span>
+                        طرق الدفع
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>💳</span>
+                                البطاقات المصرفية
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="payment-method">
+                                <div class="payment-icon">💳</div>
+                                <div class="payment-details">
+                                    <h4>بطاقة فيزا •••• 1234</h4>
+                                    <p>تنتهي 12/2028 • أحمد محمد</p>
+                                </div>
+                                <span class="payment-default">افتراضية</span>
+                            </div>
+
+                            <div class="payment-method">
+                                <div class="payment-icon">💳</div>
+                                <div class="payment-details">
+                                    <h4>بطاقة ماستركارد •••• 5678</h4>
+                                    <p>تنتهي 08/2027 • أحمد محمد</p>
+                                </div>
+                                <button class="btn-secondary" style="padding: 0.5rem 1rem;">تعيين افتراضي</button>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-primary" onclick="addPaymentMethod()">
+                                    <span>➕</span>
+                                    إضافة بطاقة جديدة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>📱</span>
+                                المحافظ الإلكترونية
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="payment-method">
+                                <div class="payment-icon">📱</div>
+                                <div class="payment-details">
+                                    <h4>Zain Cash</h4>
+                                    <p>+964 771 234 5678</p>
+                                </div>
+                                <button class="btn-secondary" style="padding: 0.5rem 1rem;">ربط</button>
+                            </div>
+
+                            <div class="payment-method">
+                                <div class="payment-icon">📱</div>
+                                <div class="payment-details">
+                                    <h4>Asia Hawala</h4>
+                                    <p>asia@example.com</p>
+                                </div>
+                                <button class="btn-secondary" style="padding: 0.5rem 1rem;">ربط</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم العناوين -->
+                <div class="settings-section" id="addressesSection">
+                    <h2 class="section-title">
+                        <span>📍</span>
+                        العناوين
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>🏠</span>
+                                عناويني
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="address-summary default">
+                                <div class="address-type">
+                                    <span class="address-type-icon">🏠</span>
+                                    <div class="address-type-text">
+                                        <h4>المنزل (افتراضي)</h4>
+                                        <p>بغداد، المنصور، شارع الأميرات، مبنى 15</p>
+                                    </div>
+                                </div>
+                                <button class="btn-secondary" style="padding: 0.5rem 1rem;" onclick="editAddress(1)">تعديل</button>
+                            </div>
+
+                            <div class="address-summary">
+                                <div class="address-type">
+                                    <span class="address-type-icon">💼</span>
+                                    <div class="address-type-text">
+                                        <h4>العمل</h4>
+                                        <p>بغداد، الكرادة، شارع 14 رمضان، مبنى 42</p>
+                                    </div>
+                                </div>
+                                <button class="btn-secondary" style="padding: 0.5rem 1rem;" onclick="editAddress(2)">تعديل</button>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-primary" onclick="window.location.href='addresses.html'">
+                                    <span>➕</span>
+                                    إدارة العناوين
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم اللغة والعملة -->
+                <div class="settings-section" id="languageSection">
+                    <h2 class="section-title">
+                        <span>🌐</span>
+                        اللغة والعملة
+                    </h2>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>🗣️</span>
+                                اللغة
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label class="form-label">اللغة المفضلة</label>
+                                <select class="form-input" id="preferredLanguage">
+                                    <option value="ar" selected>العربية</option>
+                                    <option value="en">English</option>
+                                    <option value="ku">كوردی</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>💰</span>
+                                العملة
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label class="form-label">العملة المفضلة</label>
+                                <select class="form-input" id="preferredCurrency">
+                                    <option value="IQD" selected>دينار عراقي (IQD)</option>
+                                    <option value="USD">دولار أمريكي (USD)</option>
+                                    <option value="EUR">يورو (EUR)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">تنسيق عرض الأسعار</label>
+                                <select class="form-input" id="priceFormat">
+                                    <option value="ar" selected>عراقي (١٢٣٬٤٥٦ د.ع)</option>
+                                    <option value="en">غربي (123,456 IQD)</option>
+                                </select>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-primary" onclick="saveLanguageSettings()">
+                                    <span>💾</span>
+                                    حفظ الإعدادات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المنطقة الخطرة -->
+                <div class="settings-section" id="dangerSection">
+                    <h2 class="section-title">
+                        <span>⚠️</span>
+                        المنطقة الخطرة
+                    </h2>
+
+                    <div class="settings-card" style="border-color: var(--error);">
+                        <div class="card-header">
+                            <h3 style="color: var(--error);">
+                                <span>🗑️</span>
+                                حذف الحساب
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <p style="margin-bottom: 1.5rem;">
+                                حذف حسابك سيؤدي إلى إزالة جميع بياناتك بشكل نهائي. لا يمكن التراجع عن هذا الإجراء.
+                            </p>
+                            
+                            <div class="form-group">
+                                <label class="form-label">اكتب "حذف حسابي" لتأكيد العملية</label>
+                                <input type="text" class="form-input" id="confirmDelete" placeholder="حذف حسابي">
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-danger" onclick="deleteAccount()">
+                                    <span>🗑️</span>
+                                    حذف الحساب نهائياً
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>
+                                <span>📥</span>
+                                تصدير البيانات
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            <p style="margin-bottom: 1.5rem;">
+                                يمكنك تصدير جميع بياناتك الشخصية وطلباتك كملف JSON.
+                            </p>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-primary" onclick="exportData()">
+                                    <span>📥</span>
+                                    تصدير البيانات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الحذف -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-container">
+            <div class="modal-icon">⚠️</div>
+            <h3 class="modal-title">تأكيد الحذف</h3>
+            <p class="modal-text">هل أنت متأكد من حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء.</p>
+            <div class="modal-actions">
+                <button class="modal-btn confirm" onclick="confirmDelete()">نعم، احذف</button>
+                <button class="modal-btn cancel" onclick="closeModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // =====================================
+        // التهيئة
+        // =====================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+        });
+
+        function loadUserData() {
+            const user = JSON.parse(localStorage.getItem('naboo_current_user'));
+            if (user) {
+                document.getElementById('fullName').value = user.fullName || user.name || '';
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('phone').value = user.phone || '';
+            }
+        }
+
+        // =====================================
+        // تبديل أقسام الإعدادات
+        // =====================================
+        function switchSettingsTab(tab) {
+            document.querySelectorAll('.settings-nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            document.querySelectorAll('.settings-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.getElementById(tab + 'Section').classList.add('active');
+        }
+
+        // =====================================
+        // تحديث معلومات الحساب
+        // =====================================
+        function updateAccount(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            let user = JSON.parse(localStorage.getItem('naboo_current_user'));
+            if (user) {
+                user.fullName = fullName;
+                user.name = fullName;
+                user.email = email;
+                user.phone = phone;
+                
+                localStorage.setItem('naboo_current_user', JSON.stringify(user));
+                showToast('✓ تم تحديث معلومات الحساب بنجاح', 'success');
+            }
+        }
+
+        // =====================================
+        // تغيير كلمة المرور
+        // =====================================
+        function changePassword(event) {
+            event.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                showToast('⚠ كلمة المرور غير متطابقة', 'error');
+                return;
+            }
+            
+            if (newPassword.length < 8) {
+                showToast('⚠ كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل', 'error');
+                return;
+            }
+            
+            showToast('✓ تم تغيير كلمة المرور بنجاح', 'success');
+            document.getElementById('passwordForm').reset();
+        }
+
+        // =====================================
+        // حفظ إعدادات الإشعارات
+        // =====================================
+        function saveNotificationSettings() {
+            showToast('✓ تم حفظ إعدادات الإشعارات', 'success');
+        }
+
+        // =====================================
+        // إنهاء الجلسات
+        // =====================================
+        function terminateSession() {
+            showToast('✓ تم إنهاء الجلسة', 'success');
+        }
+
+        function terminateAllSessions() {
+            showToast('✓ تم إنهاء جميع الجلسات الأخرى', 'success');
+        }
+
+        // =====================================
+        // إضافة طريقة دفع
+        // =====================================
+        function addPaymentMethod() {
+            showToast('سيتم إضافة هذه الميزة قريباً', 'info');
+        }
+
+        // =====================================
+        // تعديل العنوان
+        // =====================================
+        function editAddress(id) {
+            window.location.href = 'addresses.html';
+        }
+
+        // =====================================
+        // حفظ إعدادات اللغة
+        // =====================================
+        function saveLanguageSettings() {
+            showToast('✓ تم حفظ إعدادات اللغة والعملة', 'success');
+        }
+
+        // =====================================
+        // تصدير البيانات
+        // =====================================
+        function exportData() {
+            const user = JSON.parse(localStorage.getItem('naboo_current_user'));
+            const data = {
+                user: user,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'naboo-user-data.json';
+            a.click();
+            
+            showToast('✓ تم تصدير البيانات بنجاح', 'success');
+        }
+
+        // =====================================
+        // حذف الحساب
+        // =====================================
+        function deleteAccount() {
+            const confirmText = document.getElementById('confirmDelete').value;
+            if (confirmText !== 'حذف حسابي') {
+                showToast('⚠ الرجاء كتابة "حذف حسابي" للتأكيد', 'error');
+                return;
+            }
+            
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function confirmDelete() {
+            localStorage.removeItem('naboo_current_user');
+            showToast('✓ تم حذف الحساب بنجاح', 'success');
+            closeModal();
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+
+        // =====================================
+        // إغلاق النوافذ
+        // =====================================
+        function closeModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+
+        // =====================================
+        // Toast
+        // =====================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ️');
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

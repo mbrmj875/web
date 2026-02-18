@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naboo - سوق بلاد الرافدين</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-dark: #B8941E;
+            --gold-light: #F4E5C2;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #2d1f16;
+            --cream: #F5F0E8;
+            --text-dark: #2d1f16;
+            --text-light: #F5F0E8;
+            --shadow: rgba(212, 175, 55, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-brown) 100%);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        
+        .star {
+            color: var(--gold-primary);
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 8px var(--gold-primary));
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 8px var(--gold-primary)); }
+            50% { filter: drop-shadow(0 0 15px var(--gold-light)); }
+        }
+        
+        .logo-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold-primary);
+            border-radius: 25px;
+            padding: 0.6rem 2.5rem 0.6rem 1.5rem;
+            color: var(--text-light);
+            width: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px var(--shadow);
+            width: 300px;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(245, 240, 232, 0.6);
+        }
+        
+        .icon-btn {
+            background: transparent;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .icon-btn:hover {
+            background: var(--gold-primary);
+            color: var(--dark-bg);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px var(--shadow);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background: var(--bronze);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1410 0%, #3d2817 50%, #1a1410 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(205, 127, 50, 0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: 4.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            animation: fadeInDown 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            gap: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .btn {
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: var(--dark-bg);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gold-primary);
+            color: var(--dark-bg);
+            transform: translateY(-5px) scale(1.05);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+        
+        .section-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '✦';
+            display: block;
+            color: var(--gold-primary);
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold-primary);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--cream), #f8f5ef);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--bronze);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #f5f0e8, #e8dcc8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--gold-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stars {
+            color: var(--gold-primary);
+        }
+        
+        .rating-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        
+        .currency {
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Why Shop Section */
+        .why-shop {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-brown) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-shop::before {
+            content: '✦';
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 15rem;
+            color: rgba(212, 175, 55, 0.05);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .why-shop .section-title {
+            color: var(--gold-primary);
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--gold-primary);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .step:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step h3 {
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .step p {
+            color: var(--text-light);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Mega Sale Banner */
+        .mega-sale {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #8B4513 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mega-sale::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: slidePattern 20s linear infinite;
+        }
+        
+        @keyframes slidePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .mega-sale-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .sale-badge {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .sale-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .sale-description {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #0d0a08 100%);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-primary);
+            transform: translateX(-5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--gold-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            background: var(--gold-primary);
+            color: var(--dark-bg);
+            transform: scale(1.15) rotate(10deg);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(245, 240, 232, 0.7);
+        }
+        
+        .footer-logo {
+            font-family: 'Scheherazade New', serif;
+            color: var(--gold-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            left: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            transition: left 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            left: 0;
+        }
+        
+        .cart-header {
+            background: linear-gradient(135deg, var(--dark-bg), var(--dark-brown));
+            color: var(--gold-primary);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-header h2 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+        }
+        
+        .close-cart {
+            background: transparent;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            background: var(--gold-primary);
+            color: var(--dark-bg);
+            transform: rotate(90deg);
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            animation: slideInRight 0.4s ease;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f5f0e8, #e8dcc8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .cart-item-price {
+            color: var(--gold-dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .cart-footer {
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border-top: 2px solid var(--gold-primary);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+        
+        .cart-overlay.active {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+            
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+            
+            .features-grid,
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--gold-primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <div class="logo-symbol">
+                    <div class="star">✦</div>
+                </div>
+                <span class="logo-text">Naboo</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#categories">التصنيفات</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#offers">العروض</a></li>
+                <li><a href="#about">من نحن</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <button class="icon-btn" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-count">3</span>
+                </button>
+                <button class="icon-btn">👤</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>سلة التسوق</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-item">
+                <div class="cart-item-image">👟</div>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">حذاء رياضي فاخر</div>
+                    <div class="cart-item-price">125,000 د.ع</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="cart-item-image">👜</div>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">حقيبة جلدية</div>
+                    <div class="cart-item-price">200,000 د.ع</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="cart-item-image">⌚</div>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">ساعة ذكية</div>
+                    <div class="cart-item-price">350,000 د.ع</div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>المجموع:</span>
+                <span>675,000 د.ع</span>
+            </div>
+            <button class="checkout-btn">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">سوق بلاد الرافدين</h1>
+            <p class="hero-subtitle">حيث التاريخ يلتقي بالحداثة</p>
+            <p class="hero-description">
+                اكتشف أفضل المنتجات من جميع الفئات • توصيل سريع لجميع أنحاء العراق • نقاط استلام قريبة منك
+            </p>
+            <div class="hero-cta">
+                <a href="#products" class="btn btn-primary">تسوق الآن</a>
+                <a href="#categories" class="btn btn-secondary">استكشف التصنيفات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">لماذا تختار Naboo؟</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>توصيل سريع</h3>
+                <p>خدمة توصيل احترافية لجميع المحافظات العراقية في أسرع وقت ممكن</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>نقاط استلام قريبة</h3>
+                <p>اختر نقطة الاستلام الأقرب إليك واستلم طلبك في الوقت المناسب لك</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>دفع آمن ومرن</h3>
+                <p>خيارات دفع متعددة: نقداً عند الاستلام أو الدفع الإلكتروني الآمن</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>إرجاع سهل</h3>
+                <p>سياسة إرجاع واستبدال مرنة خلال 14 يوم من تاريخ الشراء</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>منتجات أصلية</h3>
+                <p>جميع منتجاتنا أصلية 100% من العلامات التجارية العالمية</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>عروض حصرية</h3>
+                <p>خصومات وعروض مميزة للعملاء المسجلين في التطبيق</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <h2 class="section-title">تسوق حسب التصنيف</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">👟</div>
+                <h3>أحذية</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👗</div>
+                <h3>ملابس</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👜</div>
+                <h3>حقائب</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⌚</div>
+                <h3>ساعات</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>إلكترونيات</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <h3>المنزل</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <h3>رياضة</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💄</div>
+                <h3>تجميل</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">المنتجات الأكثر مبيعاً</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="product-badge">جديد</span>
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <div class="product-category">أحذية رياضية</div>
+                    <h3 class="product-name">حذاء رياضي فاخر</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(245 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            125,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('حذاء رياضي فاخر', 125000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <span class="product-badge">خصم 30%</span>
+                <div class="product-image">👜</div>
+                <div class="product-info">
+                    <div class="product-category">حقائب</div>
+                    <h3 class="product-name">حقيبة جلدية فاخرة</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(189 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            200,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('حقيبة جلدية فاخرة', 200000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-category">ساعات</div>
+                    <h3 class="product-name">ساعة ذكية احترافية</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(512 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            350,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('ساعة ذكية احترافية', 350000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <span class="product-badge">الأكثر مبيعاً</span>
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-category">ملابس</div>
+                    <h3 class="product-name">قميص كلاسيكي</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(387 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            85,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('قميص كلاسيكي', 85000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-category">إلكترونيات</div>
+                    <h3 class="product-name">سماعات لاسلكية</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(276 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            150,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('سماعات لاسلكية', 150000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <span class="product-badge">خصم 50%</span>
+                <div class="product-image">🕶️</div>
+                <div class="product-info">
+                    <div class="product-category">إكسسوارات</div>
+                    <h3 class="product-name">نظارة شمسية عصرية</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(158 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            65,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('نظارة شمسية عصرية', 65000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">💼</div>
+                <div class="product-info">
+                    <div class="product-category">حقائب</div>
+                    <h3 class="product-name">حقيبة لابتوب احترافية</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(423 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            180,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('حقيبة لابتوب احترافية', 180000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <span class="product-badge">جديد</span>
+                <div class="product-image">🎒</div>
+                <div class="product-info">
+                    <div class="product-category">حقائب</div>
+                    <h3 class="product-name">حقيبة ظهر رياضية</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(194 تقييم)</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            95,000 <span class="currency">د.ع</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('حقيبة ظهر رياضية', 95000)">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Shop Section -->
+    <section class="why-shop" id="about">
+        <h2 class="section-title">كيف تتسوق معنا؟</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>تصفح المنتجات</h3>
+                <p>استكشف آلاف المنتجات من مختلف الفئات واختر ما يناسبك</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>اختر نقطة الاستلام</h3>
+                <p>حدد نقطة الاستلام الأقرب لك من عشرات النقاط المنتشرة في العراق</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>استلم واستمتع</h3>
+                <p>استلم طلبك واستمتع بمنتجاتك الجديدة مع ضمان الجودة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mega Sale Banner -->
+    <section class="mega-sale" id="offers">
+        <div class="mega-sale-content">
+            <div class="sale-badge">MEGA SALE</div>
+            <h2 class="sale-title">خصومات تصل إلى 70%</h2>
+            <p class="sale-description">على جميع المنتجات • عروض محدودة</p>
+            <a href="#products" class="btn btn-primary">تسوق العروض الآن</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘</a>
+                    <a href="#" class="social-btn">📷</a>
+                    <a href="#" class="social-btn">🐦</a>
+                    <a href="#" class="social-btn">📺</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#categories">التصنيفات</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#offers">العروض</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cartCount = 3;
+        
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.querySelector('.cart-overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        function addToCart(productName, price) {
+            cartCount++;
+            document.querySelector('.cart-count').textContent = cartCount;
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-weight: 600;
+                z-index: 3000;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                animation: slideDown 0.5s ease;
+            `;
+            notification.textContent = `✓ تمت إضافة ${productName} إلى السلة`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 2500);
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.feature-card, .category-card, .product-card, .step').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = e.target.value;
+                if (searchTerm.trim()) {
+                    alert(`البحث عن: ${searchTerm}`);
+                    // Here you would implement actual search functionality
+                }
+            }
+        });
+        
+        // Add keyframes for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+            
+            @keyframes slideUp {
+                from {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-30px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / hero.offsetHeight) * 0.5;
+            }
+        });
+        
+        // Category cards click handler
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.querySelector('h3').textContent;
+                alert(`تصفح قسم: ${category}`);
+                // Here you would navigate to category page
+            });
+        });
+    </script>
+</body>
+</html>

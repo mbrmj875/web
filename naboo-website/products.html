@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - المنتجات</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.svg" alt="Naboo Logo" class="logo-full">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">التصنيفات</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <a href="cart.html" class="icon-btn">
+                    🛒
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+                <button class="icon-btn">👤</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            <span>المنتجات</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">جميع المنتجات</h1>
+            
+            <!-- Filter Bar -->
+            <div style="background: white; padding: 1.5rem; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">التصنيف:</label>
+                        <select id="categoryFilter" style="padding: 0.7rem 1.5rem; border: 2px solid var(--gold-primary); border-radius: 25px; background: white; color: var(--text-dark); font-size: 1rem; cursor: pointer;">
+                            <option value="">الكل</option>
+                            <option value="shoes">أحذية</option>
+                            <option value="clothes">ملابس</option>
+                            <option value="bags">حقائب</option>
+                            <option value="watches">ساعات</option>
+                            <option value="electronics">إلكترونيات</option>
+                            <option value="home">المنزل</option>
+                            <option value="sports">رياضة</option>
+                            <option value="beauty">تجميل</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">الترتيب حسب:</label>
+                        <select id="sortFilter" style="padding: 0.7rem 1.5rem; border: 2px solid var(--gold-primary); border-radius: 25px; background: white; color: var(--text-dark); font-size: 1rem; cursor: pointer;">
+                            <option value="popular">الأكثر شعبية</option>
+                            <option value="price-low">السعر: من الأقل للأعلى</option>
+                            <option value="price-high">السعر: من الأعلى للأقل</option>
+                            <option value="rating">التقييم</option>
+                            <option value="newest">الأحدث</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-right: auto;">
+                        <span id="productCount" style="color: var(--gold-dark); font-weight: 600; font-size: 1.1rem;">عرض 0 منتج</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="grid grid-4" id="productsGrid"></div>
+            
+            <!-- No Results -->
+            <div id="noResults" style="display: none; text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">🔍</div>
+                <h3 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem;">لا توجد نتائج</h3>
+                <p style="color: #666;">جرب البحث بكلمات مختلفة أو تصفح جميع المنتجات</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘</a>
+                    <a href="#" class="social-btn">📷</a>
+                    <a href="#" class="social-btn">🐦</a>
+                    <a href="#" class="social-btn">📺</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // All products data
+        const allProducts = [
+            { id: 1, name: 'حذاء رياضي فاخر', category: 'shoes', categoryAr: 'أحذية رياضية', price: 125000, icon: '👟', rating: 5, reviews: 245, badge: 'جديد' },
+            { id: 2, name: 'حقيبة جلدية فاخرة', category: 'bags', categoryAr: 'حقائب', price: 200000, icon: '👜', rating: 4, reviews: 189, badge: 'خصم 30%' },
+            { id: 3, name: 'ساعة ذكية احترافية', category: 'watches', categoryAr: 'ساعات', price: 350000, icon: '⌚', rating: 5, reviews: 512 },
+            { id: 4, name: 'قميص كلاسيكي', category: 'clothes', categoryAr: 'ملابس', price: 85000, icon: '👕', rating: 5, reviews: 387, badge: 'الأكثر مبيعاً' },
+            { id: 5, name: 'سماعات لاسلكية', category: 'electronics', categoryAr: 'إلكترونيات', price: 150000, icon: '📱', rating: 4, reviews: 276 },
+            { id: 6, name: 'نظارة شمسية عصرية', category: 'accessories', categoryAr: 'إكسسوارات', price: 65000, icon: '🕶️', rating: 5, reviews: 158, badge: 'خصم 50%' },
+            { id: 7, name: 'حقيبة لابتوب احترافية', category: 'bags', categoryAr: 'حقائب', price: 180000, icon: '💼', rating: 5, reviews: 423 },
+            { id: 8, name: 'حقيبة ظهر رياضية', category: 'bags', categoryAr: 'حقائب', price: 95000, icon: '🎒', rating: 4, reviews: 194, badge: 'جديد' },
+            { id: 9, name: 'فستان سهرة أنيق', category: 'clothes', categoryAr: 'ملابس', price: 220000, icon: '👗', rating: 5, reviews: 301 },
+            { id: 10, name: 'حذاء كلاسيكي جلد', category: 'shoes', categoryAr: 'أحذية', price: 175000, icon: '👞', rating: 5, reviews: 267 },
+            { id: 11, name: 'ساعة كلاسيكية فاخرة', category: 'watches', categoryAr: 'ساعات', price: 450000, icon: '⌚', rating: 5, reviews: 189, badge: 'حصري' },
+            { id: 12, name: 'هاتف ذكي', category: 'electronics', categoryAr: 'إلكترونيات', price: 850000, icon: '📱', rating: 5, reviews: 678 }
+        ];
+
+        let filteredProducts = [...allProducts];
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const noResults = document.getElementById('noResults');
+            const productCount = document.getElementById('productCount');
+
+            if (filteredProducts.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                productCount.textContent = 'عرض 0 منتج';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            productCount.textContent = `عرض ${filteredProducts.length} منتج`;
+
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card" onclick="window.location.href='product-details.html?id=${product.id}'">
+                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    <div class="product-image">${product.icon}</div>
+                    <div class="product-info">
+                        <div class="product-category">${product.categoryAr}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-rating">
+                            <span class="stars">${'★'.repeat(product.rating)}${'☆'.repeat(5-product.rating)}</span>
+                            <span class="rating-count">(${product.reviews} تقييم)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                ${product.price.toLocaleString('ar-IQ')} <span class="currency">د.ع</span>
+                            </div>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">أضف للسلة</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function applyFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+            const searchTerm = getURLParameter('search');
+
+            // Filter by category
+            filteredProducts = allProducts.filter(product => {
+                if (category && product.category !== category) return false;
+                if (searchTerm && !product.name.includes(searchTerm)) return false;
+                return true;
+            });
+
+            // Sort
+            switch(sort) {
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    filteredProducts.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
+                    break;
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.id - a.id);
+                    break;
+                default: // popular
+                    filteredProducts.sort((a, b) => b.reviews - a.reviews);
+            }
+
+            renderProducts();
+        }
+
+        // Event listeners
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('sortFilter').addEventListener('change', applyFilters);
+
+        // Check URL parameters
+        const urlCategory = getURLParameter('category');
+        if (urlCategory) {
+            document.getElementById('categoryFilter').value = urlCategory;
+        }
+
+        // Initial render
+        applyFilters();
+    </script>
+</body>
+</html>

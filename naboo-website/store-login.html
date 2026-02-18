@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+    <title>Naboo - دخول المتجر</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+        }
+
+        /* =====================================
+           أنماط الصفحة
+        ===================================== */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d1f16 50%, #1a1410 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .store-container {
+            width: 100%;
+            max-width: 500px;
+            animation: containerPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes containerPop {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .store-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .store-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-icon {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(212, 175, 55, 0.4));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .store-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .store-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* =====================================
+           بطاقة معلومات المتجر
+        ===================================== */
+        .store-info-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(205, 127, 50, 0.1));
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .store-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .store-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .store-info-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(-5px);
+            border-radius: 1rem;
+        }
+
+        .store-info-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+        }
+
+        .store-info-content {
+            flex: 1;
+        }
+
+        .store-info-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .store-info-value {
+            font-weight: 700;
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           نموذج تسجيل الدخول
+        ===================================== */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-input:hover {
+            border-color: var(--bronze);
+        }
+
+        /* =====================================
+           خيارات إضافية
+        ===================================== */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--gold-primary);
+        }
+
+        .forgot-link {
+            color: var(--gold-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .forgot-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+
+        .forgot-link:hover::after {
+            width: 100%;
+        }
+
+        /* =====================================
+           زر الدخول
+        ===================================== */
+        .store-login-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #8B4513, #CD7F32, #D4AF37);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            border-radius: 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .store-login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .store-login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.4);
+        }
+
+        .store-login-btn:hover::before {
+            left: 100%;
+        }
+
+        .store-login-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            font-size: 1.4rem;
+            animation: lockShake 2s infinite;
+        }
+
+        @keyframes lockShake {
+            0%, 100% { transform: rotate(0); }
+            5% { transform: rotate(10deg); }
+            10% { transform: rotate(-10deg); }
+            15% { transform: rotate(5deg); }
+            20% { transform: rotate(0); }
+        }
+
+        /* =====================================
+           تذييل الصفحة
+        ===================================== */
+        .store-footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-footer p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+        }
+
+        .store-footer a {
+            color: var(--gold-primary);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .store-footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+
+        .store-footer a:hover::after {
+            width: 100%;
+        }
+
+        .register-prompt {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .message-box {
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            animation: messageSlide 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-box.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid var(--error);
+            color: var(--error);
+        }
+
+        .message-box.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success);
+            color: var(--success);
+        }
+
+        /* =====================================
+           التوست notification
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 600px) {
+            .store-card {
+                padding: 1.5rem;
+            }
+
+            .store-title {
+                font-size: 2rem;
+            }
+
+            .store-icon {
+                font-size: 5rem;
+            }
+
+            .form-options {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+        /* =====================================
+           تأثيرات التحميل
+        ===================================== */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="store-container">
+        <div class="store-card">
+            <!-- الهيدر -->
+            <div class="store-header">
+                <div class="store-icon">🏪</div>
+                <h1 class="store-title">لوحة تحكم المتجر</h1>
+                <p class="store-subtitle">أدخل بيانات متجرك للدخول إلى عالم البيع</p>
+            </div>
+
+            <!-- رسائل التنبيه -->
+            <div id="storeMessage" class="message-box" style="display: none;"></div>
+
+            <!-- بطاقة معلومات المتجر (تظهر إذا كانت هناك جلسة سابقة) -->
+            <div id="storeInfoCard" class="store-info-card" style="display: none;">
+                <div class="store-info-item">
+                    <div class="store-info-icon">🏬</div>
+                    <div class="store-info-content">
+                        <div class="store-info-label">اسم المتجر</div>
+                        <div class="store-info-value" id="displayStoreName">متجر الإلكترونيات</div>
+                    </div>
+                </div>
+                <div class="store-info-item">
+                    <div class="store-info-icon">👤</div>
+                    <div class="store-info-content">
+                        <div class="store-info-label">صاحب المتجر</div>
+                        <div class="store-info-value" id="displayOwnerName">أحمد محمد</div>
+                    </div>
+                </div>
+                <div class="store-info-item">
+                    <div class="store-info-icon">📧</div>
+                    <div class="store-info-content">
+                        <div class="store-info-label">البريد الإلكتروني</div>
+                        <div class="store-info-value" id="displayEmail">ahmed@store.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نموذج تسجيل الدخول -->
+            <form id="storeLoginForm" onsubmit="handleStoreLogin(event)">
+                <div class="form-group">
+                    <label class="form-label" for="storeName">
+                        <span>🏬</span> اسم المتجر
+                    </label>
+                    <input 
+                        type="text" 
+                        id="storeName" 
+                        class="form-input" 
+                        placeholder="أدخل اسم متجرك"
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="storePassword">
+                        <span>🔑</span> كلمة المرور
+                    </label>
+                    <input 
+                        type="password" 
+                        id="storePassword" 
+                        class="form-input" 
+                        placeholder="••••••••"
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberStore">
+                        <span>تذكرني</span>
+                    </label>
+                    <a href="#" class="forgot-link">نسيت كلمة المرور؟</a>
+                </div>
+
+                <button type="submit" class="store-login-btn" id="loginBtn">
+                    <span class="btn-icon">🔓</span>
+                    <span>دخول إلى المتجر</span>
+                </button>
+            </form>
+
+            <!-- تذييل الصفحة -->
+            <div class="store-footer">
+                <p>لا تملك متجراً بعد؟</p>
+                <div class="register-prompt">
+                    <a href="seller-register.html">🚀 سجل كبائع الآن واستفد من المزايا الحصرية</a>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.85rem;">
+                    بالدخول أنت توافق على 
+                    <a href="#">شروط استخدام المتجر</a> 
+                    و <a href="#">سياسة البائعين</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // ================================================
+        // نظام دخول المتجر المتكامل
+        // ================================================
+
+        // عناصر الصفحة
+        const storeMessage = document.getElementById('storeMessage');
+        const storeInfoCard = document.getElementById('storeInfoCard');
+        const loginBtn = document.getElementById('loginBtn');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const toastIcon = document.getElementById('toastIcon');
+
+        // =====================================
+        // دوال مساعدة
+        // =====================================
+        function showMessage(message, type = 'error') {
+            storeMessage.style.display = 'block';
+            storeMessage.textContent = message;
+            storeMessage.className = `message-box ${type}`;
+            
+            setTimeout(() => {
+                storeMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function showToast(message, type = 'success') {
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : '⚠';
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                loginBtn.innerHTML = '<span class="loading"></span><span> جاري التحقق...</span>';
+                loginBtn.disabled = true;
+            } else {
+                loginBtn.innerHTML = '<span class="btn-icon">🔓</span><span>دخول إلى المتجر</span>';
+                loginBtn.disabled = false;
+            }
+        }
+
+        // =====================================
+        // التحقق من وجود جلسة متجر نشطة
+        // =====================================
+        function checkStoreSession() {
+            const storeSession = localStorage.getItem('store_session');
+            if (storeSession) {
+                try {
+                    const store = JSON.parse(storeSession);
+                    
+                    // عرض بطاقة المعلومات
+                    storeInfoCard.style.display = 'block';
+                    document.getElementById('displayStoreName').textContent = store.storeName;
+                    document.getElementById('displayOwnerName').textContent = store.ownerName;
+                    document.getElementById('displayEmail').textContent = store.email;
+                    
+                    // إخفاء نموذج تسجيل الدخول
+                    document.getElementById('storeLoginForm').style.display = 'none';
+                    
+                    showMessage(`مرحباً بعودتك إلى ${store.storeName}`, 'success');
+                    
+                    // التوجيه التلقائي إلى لوحة التحكم
+                    setTimeout(() => {
+                        window.location.href = 'seller-dashboard.html';
+                    }, 2000);
+                } catch (e) {
+                    console.error('خطأ في قراءة بيانات الجلسة', e);
+                    localStorage.removeItem('store_session');
+                }
+            }
+        }
+
+        // =====================================
+        // معالجة تسجيل الدخول
+        // =====================================
+        function handleStoreLogin(event) {
+            event.preventDefault();
+            
+            const storeName = document.getElementById('storeName').value.trim();
+            const storePassword = document.getElementById('storePassword').value;
+            const remember = document.getElementById('rememberStore').checked;
+
+            // التحقق من المدخلات
+            if (!storeName || !storePassword) {
+                showMessage('⚠ يرجى إدخال اسم المتجر وكلمة المرور', 'error');
+                return;
+            }
+
+            setLoading(true);
+            showToast('✓ جاري التحقق من بيانات المتجر...', 'info');
+
+            setTimeout(() => {
+                // البحث عن المتجر في قاعدة البيانات
+                const users = JSON.parse(localStorage.getItem('naboo_users') || '[]');
+                const seller = users.find(u => 
+                    u.role === 'seller' && 
+                    u.storeInfo && 
+                    u.storeInfo.name.toLowerCase() === storeName.toLowerCase() &&
+                    u.storePassword === storePassword
+                );
+
+                if (!seller) {
+                    showMessage('⚠ اسم المتجر أو كلمة المرور غير صحيحة', 'error');
+                    setLoading(false);
+                    return;
+                }
+
+                // التحقق من حالة المتجر
+                if (seller.status === 'pending') {
+                    showMessage('⏳ متجرك قيد المراجعة من قبل الإدارة. سيتم إشعارك عند الموافقة', 'warning');
+                    setLoading(false);
+                    return;
+                }
+
+                if (seller.status === 'rejected') {
+                    showMessage('❌ عذراً، لم يتم الموافقة على متجرك. يرجى التواصل مع الدعم', 'error');
+                    setLoading(false);
+                    return;
+                }
+
+                // حفظ جلسة المتجر
+                const storeSession = {
+                    storeId: seller.id,
+                    storeName: seller.storeInfo.name,
+                    ownerName: seller.fullName || seller.name,
+                    email: seller.email,
+                    loginTime: new Date().toISOString()
+                };
+
+                localStorage.setItem('store_session', JSON.stringify(storeSession));
+                
+                if (remember) {
+                    sessionStorage.setItem('store_session', JSON.stringify(storeSession));
+                }
+
+                showToast('✓ تم الدخول إلى المتجر بنجاح!', 'success');
+
+                setTimeout(() => {
+                    window.location.href = 'seller-dashboard.html';
+                }, 1500);
+            }, 1500);
+        }
+
+        // =====================================
+        // تأثيرات إضافية
+        // =====================================
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateX(5px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateX(0)';
+            });
+        });
+
+        // التحقق عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            checkStoreSession();
+            
+            // إضافة تأثير كتابة للعنوان
+            const title = document.querySelector('.store-title');
+            title.style.opacity = '0';
+            setTimeout(() => {
+                title.style.transition = 'opacity 0.5s ease';
+                title.style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

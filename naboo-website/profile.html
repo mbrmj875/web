@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - الملف الشخصي</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================
+           المتغيرات الأساسية
+        ===================================== */
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E5C2;
+            --gold-dark: #B8941E;
+            --bronze: #CD7F32;
+            --dark-bg: #1a1410;
+            --dark-brown: #3d2817;
+            --cream: #F5F0E8;
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* =====================================
+           أنماط الصفحة
+        ===================================== */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f5ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: containerFade 0.6s ease;
+        }
+
+        @keyframes containerFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================================
+           رأس الصفحة
+        ===================================== */
+        .profile-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d1f16 100%);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-title {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .profile-title h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .profile-title p {
+            color: rgba(245, 240, 232, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           بطاقة الملف الشخصي
+        ===================================== */
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--gray-200);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--bronze));
+        }
+
+        /* =====================================
+           صورة الملف الشخصي
+        ===================================== */
+        .profile-avatar-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            animation: avatarPulse 2s infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 20px 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar-upload-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            border: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .avatar-upload-btn:hover {
+            background: var(--bronze);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-role {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 40px;
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* =====================================
+           إحصائيات سريعة
+        ===================================== */
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* =====================================
+           تبويبات الملف الشخصي
+        ===================================== */
+        .profile-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--gray-200);
+            padding-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-tab:hover {
+            color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .profile-tab.active {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* =====================================
+           محتوى التبويبات
+        ===================================== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================================
+           نموذج المعلومات الشخصية
+        ===================================== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed var(--gray-200);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            width: 100px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            flex: 1;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10B981;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* =====================================
+           نموذج تعديل المعلومات
+        ===================================== */
+        .edit-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-input:hover {
+            border-color: var(--bronze);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* =====================================
+           أزرار الإجراءات
+        ===================================== */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: white;
+            color: var(--error);
+            padding: 1rem 2rem;
+            border: 2px solid var(--error);
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-danger:hover {
+            background: var(--error);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* =====================================
+           سجل الطلبات
+        ===================================== */
+        .orders-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .order-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .order-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold-primary);
+        }
+
+        .order-details h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .order-details p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .order-status {
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .status-delivered {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            color: #10B981;
+        }
+
+        .status-shipped {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-primary);
+        }
+
+        .status-processing {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            color: #3B82F6;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            color: #F59E0B;
+        }
+
+        /* =====================================
+           قائمة المفضلة
+        ===================================== */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wishlist-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .wishlist-item:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .wishlist-image {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .wishlist-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .wishlist-price {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .wishlist-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .wishlist-btn {
+            flex: 1;
+            padding: 0.6rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .wishlist-btn.add-to-cart {
+            background: linear-gradient(135deg, var(--gold-primary), var(--bronze));
+            color: white;
+            border: none;
+        }
+
+        .wishlist-btn.remove {
+            color: var(--error);
+        }
+
+        .wishlist-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* =====================================
+           إعدادات الحساب
+        ===================================== */
+        .settings-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--gray-200);
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .toggle-switch:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .toggle-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray-300);
+            transition: .4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--gold-primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        /* =====================================
+           عنوان المتجر (للبائعين)
+        ===================================== */
+        .store-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(205, 127, 50, 0.1));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            margin-top: 2rem;
+        }
+
+        .store-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .store-icon {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .store-info h3 {
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .store-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .store-stat {
+            text-align: center;
+        }
+
+        .store-stat-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gold-primary);
+        }
+
+        .store-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* =====================================
+           نافذة تعديل الصورة
+        ===================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFade 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2.5rem;
+            position: relative;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 3px solid var(--gold-primary);
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--gray-200);
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-300);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--error);
+            color: white;
+            border-color: var(--error);
+            transform: rotate(90deg);
+        }
+
+        .upload-area {
+            border: 3px dashed var(--gray-300);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--gold-primary);
+            background: var(--gold-light);
+        }
+
+        .upload-area .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* =====================================
+           رسائل التنبيه
+        ===================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            min-width: 350px;
+            border-right: 4px solid var(--success);
+            animation: toastSlide 0.3s ease;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* =====================================
+           تجاوب مع الشاشات
+        ===================================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .profile-title h1 {
+                font-size: 2rem;
+            }
+
+            .profile-avatar-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-avatar {
+                font-size: 3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .order-icon {
+                margin: 0 auto;
+            }
+
+            .profile-tabs {
+                justify-content: center;
+            }
+
+            .profile-tab {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- رأس الصفحة -->
+        <div class="profile-header">
+            <div class="profile-title">
+                <h1>
+                    <span>👤</span>
+                    الملف الشخصي
+                </h1>
+                <p>مرحباً بعودتك! يمكنك إدارة معلوماتك الشخصية من هنا</p>
+            </div>
+        </div>
+
+        <!-- بطاقة الملف الشخصي -->
+        <div class="profile-card">
+            <!-- صورة الملف الشخصي -->
+            <div class="profile-avatar-section">
+                <div class="profile-avatar-wrapper">
+                    <div class="profile-avatar" id="profileAvatar">
+                        <span id="avatarText">أ</span>
+                    </div>
+                    <div class="avatar-upload-btn" onclick="openAvatarModal()">
+                        <span>📷</span>
+                    </div>
+                </div>
+                <h2 class="profile-name" id="profileName">أحمد محمد</h2>
+                <span class="profile-role" id="profileRole">عميل</span>
+            </div>
+
+            <!-- إحصائيات سريعة -->
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalOrders">27</div>
+                    <div class="stat-label">إجمالي الطلبات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalSpent">1,250,000</div>
+                    <div class="stat-label">إجمالي المشتريات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="wishlistCount">12</div>
+                    <div class="stat-label">المفضلة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="reviewsCount">8</div>
+                    <div class="stat-label">التقييمات</div>
+                </div>
+            </div>
+
+            <!-- تبويبات الملف الشخصي -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" onclick="switchProfileTab('info')">
+                    <span>📋</span>
+                    المعلومات الشخصية
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('edit')">
+                    <span>✏️</span>
+                    تعديل المعلومات
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('orders')">
+                    <span>📦</span>
+                    طلباتي
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('wishlist')">
+                    <span>❤️</span>
+                    المفضلة
+                </button>
+                <button class="profile-tab" onclick="switchProfileTab('settings')">
+                    <span>⚙️</span>
+                    الإعدادات
+                </button>
+            </div>
+
+            <!-- محتوى المعلومات الشخصية -->
+            <div class="tab-content active" id="infoTab">
+                <div class="info-grid">
+                    <!-- المعلومات الأساسية -->
+                    <div class="info-card">
+                        <h3>
+                            <span>👤</span>
+                            المعلومات الأساسية
+                        </h3>
+                        <div class="info-row">
+                            <span class="info-label">الاسم</span>
+                            <span class="info-value" id="displayName">أحمد محمد</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">البريد</span>
+                            <span class="info-value" id="displayEmail">ahmed@example.com</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">الهاتف</span>
+                            <span class="info-value" id="displayPhone">+964 771 234 5678</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">العنوان</span>
+                            <span class="info-value" id="displayAddress">بغداد، المنصور</span>
+                        </div>
+                    </div>
+
+                    <!-- معلومات الحساب -->
+                    <div class="info-card">
+                        <h3>
+                            <span>🔐</span>
+                            معلومات الحساب
+                        </h3>
+                        <div class="info-row">
+                            <span class="info-label">عضو منذ</span>
+                            <span class="info-value" id="displayMemberSince">15 يناير 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">آخر دخول</span>
+                            <span class="info-value" id="displayLastLogin">17 فبراير 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">الحالة</span>
+                            <span class="info-value">
+                                <span class="info-badge" id="displayStatus">✅ نشط</span>
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">طريقة التسجيل</span>
+                            <span class="info-value" id="displayProvider">البريد الإلكتروني</span>
+                        </div>
+                    </div>
+
+                    <!-- العناوين المحفوظة -->
+                    <div class="info-card">
+                        <h3>
+                            <span>📍</span>
+                            العناوين المحفوظة
+                        </h3>
+                        <div class="info-row">
+                            <span class="info-value">
+                                <strong>الرئيسي:</strong> بغداد، المنصور، شارع الأميرات
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-value">
+                                <strong>البديل:</strong> بغداد، الكرادة، مجمع بغداد
+                            </span>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn-secondary" style="width: 100%;" onclick="switchProfileTab('edit')">
+                                <span>➕</span>
+                                إضافة عنوان جديد
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- طرق الدفع -->
+                    <div class="info-card">
+                        <h3>
+                            <span>💳</span>
+                            طرق الدفع
+                        </h3>
+                        <div class="info-row">
+                            <span class="info-value">
+                                <span>💵</span> نقداً عند الاستلام
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-value">
+                                <span>💳</span> بطاقة ائتمان (**** 1234)
+                            </span>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn-secondary" style="width: 100%;" onclick="switchProfileTab('edit')">
+                                <span>➕</span>
+                                إضافة بطاقة جديدة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم المتجر (للبائعين فقط) -->
+                <div class="store-section" id="sellerSection" style="display: none;">
+                    <div class="store-header">
+                        <div class="store-icon">🏪</div>
+                        <div class="store-info">
+                            <h3 id="storeName">متجر الإلكترونيات</h3>
+                            <p id="storeDesc">أفضل المنتجات الإلكترونية في العراق</p>
+                        </div>
+                    </div>
+                    
+                    <div class="store-stats">
+                        <div class="store-stat">
+                            <div class="store-stat-value" id="storeProducts">45</div>
+                            <div class="store-stat-label">منتج</div>
+                        </div>
+                        <div class="store-stat">
+                            <div class="store-stat-value" id="storeSales">156</div>
+                            <div class="store-stat-label">طلب</div>
+                        </div>
+                        <div class="store-stat">
+                            <div class="store-stat-value" id="storeRating">4.8</div>
+                            <div class="store-stat-label">تقييم</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <button class="btn-primary" style="flex: 1;" onclick="window.location.href='seller-dashboard.html'">
+                            <span>📊</span>
+                            لوحة تحكم المتجر
+                        </button>
+                        <button class="btn-secondary" style="flex: 1;" onclick="window.location.href='seller-products.html'">
+                            <span>📦</span>
+                            إدارة المنتجات
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- محتوى تعديل المعلومات -->
+            <div class="tab-content" id="editTab">
+                <form class="edit-form" onsubmit="updateProfile(event)">
+                    <div class="form-group">
+                        <label class="form-label">الاسم الكامل</label>
+                        <input type="text" class="form-input" id="editName" value="أحمد محمد" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-input" id="editEmail" value="ahmed@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-input" id="editPhone" value="+964 771 234 5678" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">العنوان الرئيسي</label>
+                        <input type="text" class="form-input" id="editAddress" value="بغداد، المنصور، شارع الأميرات">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">كلمة المرور الحالية</label>
+                        <input type="password" class="form-input" id="currentPassword" placeholder="أدخل كلمة المرور الحالية">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">كلمة المرور الجديدة</label>
+                            <input type="password" class="form-input" id="newPassword" placeholder="أدخل كلمة المرور الجديدة">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">تأكيد كلمة المرور</label>
+                            <input type="password" class="form-input" id="confirmPassword" placeholder="أعد إدخال كلمة المرور">
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button type="submit" class="btn-primary">
+                            <span>💾</span>
+                            حفظ التغييرات
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="switchProfileTab('info')">
+                            <span>✕</span>
+                            إلغاء
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- محتوى الطلبات -->
+            <div class="tab-content" id="ordersTab">
+                <div class="orders-timeline" id="ordersList"></div>
+            </div>
+
+            <!-- محتوى المفضلة -->
+            <div class="tab-content" id="wishlistTab">
+                <div class="wishlist-grid" id="wishlistGrid"></div>
+            </div>
+
+            <!-- محتوى الإعدادات -->
+            <div class="tab-content" id="settingsTab">
+                <div class="settings-section">
+                    <h3>
+                        <span>🔔</span>
+                        الإشعارات
+                    </h3>
+                    <div class="toggle-switch">
+                        <div>
+                            <div class="toggle-label">إشعارات الطلبات</div>
+                            <div class="toggle-desc">استلام إشعارات عند تحديث حالة الطلب</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="orderNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch">
+                        <div>
+                            <div class="toggle-label">إشعارات العروض</div>
+                            <div class="toggle-desc">استلام عروض وخصومات حصرية</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="promoNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch">
+                        <div>
+                            <div class="toggle-label">إشعارات البريد</div>
+                            <div class="toggle-desc">استلام تحديثات عبر البريد الإلكتروني</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="emailNotifications">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>
+                        <span>🌐</span>
+                        اللغة والعملة
+                    </h3>
+                    <div class="form-group">
+                        <label class="form-label">اللغة المفضلة</label>
+                        <select class="form-input" id="preferredLanguage">
+                            <option value="ar" selected>العربية</option>
+                            <option value="en">English</option>
+                            <option value="ku">كوردی</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العملة المفضلة</label>
+                        <select class="form-input" id="preferredCurrency">
+                            <option value="IQD" selected>دينار عراقي (IQD)</option>
+                            <option value="USD">دولار أمريكي (USD)</option>
+                            <option value="EUR">يورو (EUR)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>
+                        <span>🔒</span>
+                        الخصوصية والأمان
+                    </h3>
+                    <div class="toggle-switch">
+                        <div>
+                            <div class="toggle-label">المصادقة الثنائية</div>
+                            <div class="toggle-desc">تفعيل طبقة أمان إضافية للحساب</div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="twoFactorAuth">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch">
+                        <div>
+                            <div class="toggle-label">جلسات نشطة</div>
+                            <div class="toggle-desc">إدارة الأجهزة المتصلة بحسابك</div>
+                        </div>
+                        <button class="btn-secondary" style="padding: 0.5rem 1rem;" onclick="showActiveSessions()">
+                            عرض الجلسات
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>
+                        <span>⚠️</span>
+                        المنطقة الخطرة
+                    </h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn-danger" onclick="deleteAccount()">
+                            <span>🗑️</span>
+                            حذف الحساب
+                        </button>
+                        <button class="btn-secondary" onclick="exportData()">
+                            <span>📥</span>
+                            تصدير البيانات
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تعديل الصورة -->
+    <div class="modal-overlay" id="avatarModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>
+                    <span>📷</span>
+                    تعديل الصورة الشخصية
+                </h2>
+                <button class="modal-close" onclick="closeModal('avatarModal')">✕</button>
+            </div>
+            
+            <div class="upload-area" onclick="document.getElementById('avatarInput').click()">
+                <input type="file" id="avatarInput" accept="image/*" style="display: none;" onchange="uploadAvatar(this)">
+                <div class="icon">📸</div>
+                <p>انقر لاختيار صورة</p>
+                <small style="color: var(--text-tertiary);">jpg, png (حتى 5MB)</small>
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn-primary" style="flex: 1;" onclick="saveAvatar()">
+                    حفظ الصورة
+                </button>
+                <button class="btn-secondary" style="flex: 1;" onclick="closeModal('avatarModal')">
+                    إلغاء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // =====================================
+        // البيانات الأساسية
+        // =====================================
+        let currentUser = JSON.parse(localStorage.getItem('naboo_current_user'));
+
+        // طلبات تجريبية
+        const sampleOrders = [
+            { id: 'ORD-001', date: '2026-02-15', items: 3, total: 275000, status: 'delivered', icon: '📦' },
+            { id: 'ORD-002', date: '2026-02-10', items: 1, total: 125000, status: 'shipped', icon: '📱' },
+            { id: 'ORD-003', date: '2026-02-05', items: 2, total: 350000, status: 'processing', icon: '⌚' },
+            { id: 'ORD-004', date: '2026-01-28', items: 4, total: 485000, status: 'delivered', icon: '👟' },
+            { id: 'ORD-005', date: '2026-01-20', items: 1, total: 95000, status: 'delivered', icon: '👕' }
+        ];
+
+        // منتجات المفضلة تجريبية
+        const sampleWishlist = [
+            { id: 1, name: 'حذاء رياضي فاخر', price: 125000, icon: '👟' },
+            { id: 2, name: 'ساعة ذكية احترافية', price: 350000, icon: '⌚' },
+            { id: 3, name: 'حقيبة جلدية فاخرة', price: 200000, icon: '👜' },
+            { id: 4, name: 'سماعات لاسلكية', price: 150000, icon: '🎧' }
+        ];
+
+        // =====================================
+        // التهيئة
+        // =====================================
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            loadUserData();
+            loadOrders();
+            loadWishlist();
+        });
+
+        function loadUserData() {
+            const name = currentUser.fullName || currentUser.name || 'مستخدم';
+            const initial = name.charAt(0).toUpperCase();
+
+            document.getElementById('profileName').textContent = name;
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('avatarText').textContent = initial;
+
+            document.getElementById('displayEmail').textContent = currentUser.email || 'بريد غير متوفر';
+            document.getElementById('displayPhone').textContent = currentUser.phone || '+964 xxx xxx xxxx';
+            
+            if (currentUser.role === 'seller') {
+                document.getElementById('profileRole').textContent = 'بائع';
+                document.getElementById('sellerSection').style.display = 'block';
+                
+                if (currentUser.storeInfo) {
+                    document.getElementById('storeName').textContent = currentUser.storeInfo.name || 'متجر بدون اسم';
+                    document.getElementById('storeDesc').textContent = currentUser.storeInfo.description || 'وصف المتجر';
+                }
+            } else {
+                document.getElementById('profileRole').textContent = 'عميل';
+            }
+        }
+
+        function loadOrders() {
+            let html = '';
+            sampleOrders.forEach(order => {
+                const statusClass = {
+                    'delivered': 'status-delivered',
+                    'shipped': 'status-shipped',
+                    'processing': 'status-processing',
+                    'pending': 'status-pending'
+                }[order.status];
+
+                const statusText = {
+                    'delivered': 'تم التوصيل',
+                    'shipped': 'تم الشحن',
+                    'processing': 'قيد المعالجة',
+                    'pending': 'قيد الانتظار'
+                }[order.status];
+
+                html += `
+                    <div class="order-card">
+                        <div class="order-icon">${order.icon}</div>
+                        <div class="order-details">
+                            <h4>طلب رقم ${order.id}</h4>
+                            <p>${order.items} منتجات • ${order.date}</p>
+                            <p style="font-weight: 700; color: var(--gold-primary);">${order.total.toLocaleString('ar-IQ')} د.ع</p>
+                        </div>
+                        <span class="order-status ${statusClass}">${statusText}</span>
+                    </div>
+                `;
+            });
+            document.getElementById('ordersList').innerHTML = html;
+
+            // تحديث الإحصائيات
+            document.getElementById('totalOrders').textContent = sampleOrders.length;
+            const totalSpent = sampleOrders.reduce((sum, o) => sum + o.total, 0);
+            document.getElementById('totalSpent').textContent = totalSpent.toLocaleString('ar-IQ');
+        }
+
+        function loadWishlist() {
+            let html = '';
+            sampleWishlist.forEach(item => {
+                html += `
+                    <div class="wishlist-item">
+                        <div class="wishlist-image">${item.icon}</div>
+                        <div class="wishlist-title">${item.name}</div>
+                        <div class="wishlist-price">${item.price.toLocaleString('ar-IQ')} د.ع</div>
+                        <div class="wishlist-actions">
+                            <button class="wishlist-btn add-to-cart" onclick="addToCart(${item.id})">
+                                🛒 أضف للسلة
+                            </button>
+                            <button class="wishlist-btn remove" onclick="removeFromWishlist(${item.id})">
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('wishlistGrid').innerHTML = html;
+            document.getElementById('wishlistCount').textContent = sampleWishlist.length;
+        }
+
+        // =====================================
+        // دوال التبويبات
+        // =====================================
+        function switchProfileTab(tab) {
+            document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            
+            const tabMap = {
+                'info': 'infoTab',
+                'edit': 'editTab',
+                'orders': 'ordersTab',
+                'wishlist': 'wishlistTab',
+                'settings': 'settingsTab'
+            };
+            
+            document.getElementById(tabMap[tab]).classList.add('active');
+        }
+
+        // =====================================
+        // دوال النوافذ المنبثقة
+        // =====================================
+        function openAvatarModal() {
+            document.getElementById('avatarModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // إغلاق النافذة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        });
+
+        // إغلاق النافذة بزر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+
+        // =====================================
+        // تحديث الملف الشخصي
+        // =====================================
+        function updateProfile(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('editName').value;
+            const email = document.getElementById('editEmail').value;
+            const phone = document.getElementById('editPhone').value;
+            const currentPass = document.getElementById('currentPassword').value;
+            const newPass = document.getElementById('newPassword').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+
+            // التحقق من كلمة المرور إذا تم إدخالها
+            if (newPass || confirmPass) {
+                if (newPass !== confirmPass) {
+                    showToast('⚠ كلمة المرور غير متطابقة', 'error');
+                    return;
+                }
+                if (newPass.length < 8) {
+                    showToast('⚠ كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل', 'error');
+                    return;
+                }
+            }
+
+            // تحديث بيانات المستخدم
+            currentUser.fullName = name;
+            currentUser.name = name;
+            currentUser.email = email;
+            currentUser.phone = phone;
+
+            localStorage.setItem('naboo_current_user', JSON.stringify(currentUser));
+
+            // تحديث العرض
+            document.getElementById('profileName').textContent = name;
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayEmail').textContent = email;
+            document.getElementById('displayPhone').textContent = phone;
+
+            showToast('✓ تم تحديث المعلومات بنجاح', 'success');
+            
+            // العودة إلى تبويب المعلومات
+            setTimeout(() => {
+                switchProfileTab('info');
+            }, 1500);
+        }
+
+        function uploadAvatar(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // هنا يمكن حفظ الصورة في localStorage
+                    showToast('✓ تم رفع الصورة بنجاح', 'success');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function saveAvatar() {
+            closeModal('avatarModal');
+            showToast('✓ تم تحديث الصورة الشخصية', 'success');
+        }
+
+        // =====================================
+        // دوال المفضلة والسلة
+        // =====================================
+        function addToCart(productId) {
+            showToast('✓ تمت الإضافة إلى السلة', 'success');
+        }
+
+        function removeFromWishlist(productId) {
+            showToast('✓ تمت الإزالة من المفضلة', 'success');
+        }
+
+        // =====================================
+        // دوال الإعدادات
+        // =====================================
+        function showActiveSessions() {
+            showToast('📱 جلسة واحدة نشطة - جهازك الحالي', 'info');
+        }
+
+        function deleteAccount() {
+            if (confirm('هل أنت متأكد من حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء')) {
+                localStorage.removeItem('naboo_current_user');
+                showToast('✓ تم حذف الحساب بنجاح', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        }
+
+        function exportData() {
+            const data = {
+                user: currentUser,
+                orders: sampleOrders,
+                wishlist: sampleWishlist
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'naboo-user-data.json';
+            a.click();
+            
+            showToast('✓ تم تصدير البيانات بنجاح', 'success');
+        }
+
+        // =====================================
+        // دوال مساعدة
+        // =====================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ️');
+            
+            const colors = {
+                'success': 'var(--success)',
+                'error': 'var(--error)',
+                'warning': 'var(--warning)',
+                'info': 'var(--info)'
+            };
+            toast.style.borderRightColor = colors[type] || colors.success;
+            
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

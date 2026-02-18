@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسينات للتجاوب مع جميع الأجهزة -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#D4AF37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- في قسم <head> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css"> <!-- أضف هذا الملف -->
+
+<!-- قبل إغلاق </body> -->
+<script src="js/script.js"></script>
+<script src="js/responsive.js"></script> <!-- أضف هذا الملف -->
+<!-- أيقونات للتطبيقات -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <title>Naboo - التصنيفات</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.svg" alt="Naboo Logo" class="logo-full">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="categories.html">التصنيفات</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن منتجاتك المفضلة...">
+                </div>
+                <a href="cart.html" class="icon-btn">
+                    🛒
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+                <button class="icon-btn">👤</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            <span>التصنيفات</span>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="section" style="padding: 3rem 2rem; background: linear-gradient(135deg, #1a1410 0%, #3d2817 50%, #1a1410 100%);">
+        <div class="container">
+            <h1 style="font-family: 'Scheherazade New', serif; font-size: 3.5rem; color: var(--gold-primary); text-align: center; margin-bottom: 1rem;">استكشف جميع التصنيفات</h1>
+            <p style="font-size: 1.3rem; color: var(--gold-light); text-align: center;">تسوق من مجموعة واسعة من المنتجات في جميع الفئات</p>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-4">
+                <!-- Shoes -->
+                <a href="products.html?category=shoes" class="category-card">
+                    <div class="category-icon">👟</div>
+                    <h3>أحذية</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">أحذية رياضية وكلاسيكية وفاخرة</p>
+                </a>
+
+                <!-- Clothes -->
+                <a href="products.html?category=clothes" class="category-card">
+                    <div class="category-icon">👗</div>
+                    <h3>ملابس</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">ملابس رجالية ونسائية وأطفال</p>
+                </a>
+
+                <!-- Bags -->
+                <a href="products.html?category=bags" class="category-card">
+                    <div class="category-icon">👜</div>
+                    <h3>حقائب</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">حقائب يد وظهر ولابتوب</p>
+                </a>
+
+                <!-- Watches -->
+                <a href="products.html?category=watches" class="category-card">
+                    <div class="category-icon">⌚</div>
+                    <h3>ساعات</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">ساعات ذكية وكلاسيكية ورياضية</p>
+                </a>
+
+                <!-- Electronics -->
+                <a href="products.html?category=electronics" class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>إلكترونيات</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">هواتف وأجهزة لوحية وملحقات</p>
+                </a>
+
+                <!-- Home -->
+                <a href="products.html?category=home" class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <h3>المنزل</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">أثاث وديكور وأدوات منزلية</p>
+                </a>
+
+                <!-- Sports -->
+                <a href="products.html?category=sports" class="category-card">
+                    <div class="category-icon">⚽</div>
+                    <h3>رياضة</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">معدات ولوازم رياضية</p>
+                </a>
+
+                <!-- Beauty -->
+                <a href="products.html?category=beauty" class="category-card">
+                    <div class="category-icon">💄</div>
+                    <h3>تجميل</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">عطور ومكياج وعناية بالبشرة</p>
+                </a>
+
+                <!-- Accessories -->
+                <a href="products.html?category=accessories" class="category-card">
+                    <div class="category-icon">🕶️</div>
+                    <h3>إكسسوارات</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">نظارات ومجوهرات وأحزمة</p>
+                </a>
+
+                <!-- Books -->
+                <a href="products.html?category=books" class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3>كتب</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">كتب ومجلات وقرطاسية</p>
+                </a>
+
+                <!-- Toys -->
+                <a href="products.html?category=toys" class="category-card">
+                    <div class="category-icon">🧸</div>
+                    <h3>ألعاب</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">ألعاب أطفال وألعاب إلكترونية</p>
+                </a>
+
+                <!-- Food -->
+                <a href="products.html?category=food" class="category-card">
+                    <div class="category-icon">🍫</div>
+                    <h3>مواد غذائية</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">مواد غذائية ومشروبات</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section" style="background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #8B4513 100%); padding: 4rem 2rem;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-family: 'Scheherazade New', serif; font-size: 3rem; color: white; margin-bottom: 1rem;">ابدأ التسوق الآن!</h2>
+            <p style="font-size: 1.3rem; color: var(--gold-light); margin-bottom: 2rem;">اكتشف آلاف المنتجات بأفضل الأسعار</p>
+            <a href="products.html" class="btn btn-primary">عرض جميع المنتجات</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-logo">Naboo</h3>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    سوق بلاد الرافدين الإلكتروني<br>
+                    حيث التاريخ يلتقي بالحداثة<br>
+                    نوفر لك أفضل المنتجات بأسعار منافسة
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘</a>
+                    <a href="#" class="social-btn">📷</a>
+                    <a href="#" class="social-btn">🐦</a>
+                    <a href="#" class="social-btn">📺</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li>📞 +964 771 234 5678</li>
+                    <li>✉️ info@naboo.com</li>
+                    <li>📍 بغداد، العراق</li>
+                    <li>🕐 السبت - الخميس: 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 Naboo - سوق بلاد الرافدين</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">صُنع بـ ❤️ في العراق</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
