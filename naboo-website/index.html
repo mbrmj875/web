@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- تحسينات متعددة للتوافق مع جميع الأجهزة -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#D4AF37">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -14,7 +14,8 @@
     <!-- خطوط جوجل -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome للأيقونات (مجاني ومتجاوب) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         /* =====================================
            المتغيرات الأساسية - ألوان محسنة
@@ -22,19 +23,23 @@
         :root {
             --gold-primary: #D4AF37;
             --gold-light: #F4E5C2;
-            --gold-dark: #B8941E;
-            --bronze: #CD7F32;
-            --bronze-light: #e09d5e;
+            --gold-dark: #A8860F;
+            --gold-bright: #F0C842;
+            --bronze: #C8732E;
+            --bronze-light: #E09A5A;
             --dark-bg: #1a1410;
             --dark-brown: #3d2817;
-            --cream: #F5F0E8;
-            --success: #10B981;
-            --error: #EF4444;
-            --warning: #F59E0B;
-            --info: #3B82F6;
-            --text-light: rgba(245, 240, 232, 0.85);
-            --text-lighter: rgba(245, 240, 232, 0.55);
-            --border-gold: rgba(212, 175, 55, 0.25);
+            --cream: #F8F3EA;
+            --cream-dark: #EFE8D8;
+            --success: #0FAE73;
+            --error: #E53E3E;
+            --warning: #E88C0B;
+            --info: #2B72E8;
+            --text-light: rgba(248, 243, 234, 0.92);
+            --text-lighter: rgba(248, 243, 234, 0.60);
+            --border-gold: rgba(212, 175, 55, 0.30);
+            --shadow-gold: rgba(212, 175, 55, 0.20);
+            --header-bg: #181210;
         }
 
         /* =====================================
@@ -1735,6 +1740,85 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ==========================================================
+           تحسينات شاملة للتجاوب والألوان والأيقونات - مضافة
+        ========================================================== */
+        body { -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; min-width:320px; }
+        .fas,.far,.fab,.fa{ display:inline-flex!important; align-items:center; justify-content:center; line-height:1!important; }
+        .main-header { background: linear-gradient(135deg,#181210 0%,#271a10 100%); }
+        .top-bar { background: linear-gradient(90deg,#0b0907 0%,#18100a 50%,#0b0907 100%); }
+        .dd-row.active { background:rgba(212,175,55,0.12); }
+        .product-card { background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+        .product-card:hover { box-shadow:0 12px 35px rgba(212,175,55,0.25); border-color:rgba(212,175,55,0.4); }
+        .product-card .product-image { background:linear-gradient(135deg,#f8f3ea,#ede3cd); }
+        .add-to-cart { background:linear-gradient(135deg,#D4AF37,#C8732E); box-shadow:0 2px 8px rgba(212,175,55,0.25); }
+        .add-to-cart:hover { background:linear-gradient(135deg,#E5C048,#D98340); transform:scale(1.07); box-shadow:0 5px 15px rgba(212,175,55,0.45); }
+        .support-btn { background:linear-gradient(135deg,#D4AF37,#C8732E); box-shadow:0 6px 18px rgba(200,115,46,0.45); }
+        .footer { background:linear-gradient(160deg,#181210 0%,#0d0a07 100%); }
+        .social-btn { background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.35); color:var(--gold-primary); }
+        .social-btn:hover { background:var(--gold-primary); color:#1a1410; border-color:var(--gold-primary); }
+        .banner-section__inner { padding:0 30px; }
+
+        /* تابلت */
+        @media(min-width:481px) and (max-width:768px){
+            .products-grid { grid-template-columns:repeat(3,1fr); }
+        }
+        /* ديسكتوب كبير */
+        @media(min-width:1200px){
+            .products-grid { grid-template-columns:repeat(4,1fr); }
+        }
+        /* جوال صغير */
+        @media(max-width:400px){
+            .products-grid { grid-template-columns:repeat(2,1fr); gap:0.6rem; }
+            .product-card .product-image { height:100px; font-size:2.5rem; }
+            .product-info { padding:0.7rem; }
+            .product-name { font-size:0.8rem; }
+            .product-price { font-size:0.9rem; }
+            .add-to-cart { padding:0.35rem 0.6rem; font-size:0.65rem; }
+            .banner-section__inner { padding:0 24px; }
+            .banner-arrow { width:26px; height:26px; font-size:0.8rem; }
+        }
+        /* أصغر شاشة */
+        @media(max-width:360px){
+            html { font-size:14px; }
+            .header-row1 { padding:0.4rem 0.5rem; }
+            .logo-block img { height:26px!important; }
+            .logo-name { font-size:0.65rem!important; }
+            .drawer { width:92vw; right:-92vw; }
+        }
+        /* إصلاح خروج القوائم */
+        @media(max-width:480px){
+            .tb-dd { max-width:95vw; }
+            .user-dropdown { width:min(280px,92vw); right:-5px; left:auto; }
+        }
+        /* فوتر متجاوب */
+        @media(max-width:480px){
+            .footer { padding:1.5rem 0.8rem 1rem; }
+            .footer-content { grid-template-columns:repeat(2,1fr); text-align:right; gap:1rem; }
+            .footer-content .footer-section:first-child { grid-column:span 2; text-align:center; }
+            .social-links { justify-content:center; }
+        }
+        @media(max-width:360px){
+            .footer-content { grid-template-columns:1fr; }
+            .footer-content .footer-section:first-child { grid-column:span 1; }
+        }
+        /* Touch targets */
+        @media(hover:none) and (pointer:coarse){
+            .tb-btn,.hbtn,.drawer__item,.dropdown-item { min-height:44px; }
+            .hamburger { min-width:44px; min-height:44px; }
+            .add-to-cart { min-height:38px; padding:0.5rem 1rem; }
+            .social-btn { width:42px; height:42px; }
+        }
+        /* تقليل الحركة */
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after { animation-duration:0.01ms!important; animation-iteration-count:1!important; transition-duration:0.01ms!important; }
+        }
+        /* Safe area للآيفون */
+        @supports(padding:max(0px)){
+            .support-fab { bottom:max(1.5rem,env(safe-area-inset-bottom,1.5rem)); left:max(1.5rem,env(safe-area-inset-left,1.5rem)); }
+            .footer-bottom { padding-bottom:max(1rem,env(safe-area-inset-bottom,1rem)); }
+        }
     </style>
 </head>
 <body>
@@ -1903,12 +1987,7 @@
 
             <!-- ══ الصف الأول: هامبرغر + شعار + حساب ══ -->
             <div class="header-row1">
-    <!-- الشعار -->
-                <a href="index.html" class="logo-block">
-                    <img src="images/logo.jpg" alt="Naboo">
-                    <span class="logo-name">Naboo</span>
-                    <span class="logo-sub">Marketplace of Mesopotamia</span>
-                </a>
+
                 <!-- زر القائمة الجانبية
                 <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="فتح القائمة الجانبية">
                     <span></span>
@@ -1939,7 +2018,7 @@
                                 <div class="dropdown-avatar" id="dropdownAvatar">👤</div>
                                 <div class="dropdown-info">
                                     <div class="dropdown-name" id="dropdownName">مستخدم</div>
-                                    <div class="dropdown-email" id="dropdownEmail">user@naboo.iq</div>
+                                    <div class="dropdown-email" id="dropdownEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="295c5a4c5b6947484b4646074058">[email&#160;protected]</a></div>
                                     <div class="dropdown-badge-container" id="dropdownBadges"></div>
                                 </div>
                             </div>
@@ -1990,12 +2069,12 @@
                     </div>
 
                     <!-- زر تسجيل كبائع (مخفي على الجوال) -->
-                    <div class="seller-wrap" id="sellerWrap" style="display: none;">
+                    <!-- <div class="seller-wrap" id="sellerWrap" style="display: none;">
                         <a href="seller-register.html" class="hbtn seller-btn">
                             <div class="hbtn__icon"><i class="fas fa-user-tie"></i></div>
                             <span>تسجيل كبائع</span>
                         </a>
-                    </div>
+                    </div> -->
 
                     <!-- السلة -->
                     <a href="cart.html" class="hbtn" aria-label="عربة التسوق">
@@ -2008,6 +2087,12 @@
                 </div>
             </div>
             <!-- ══ نهاية الصف الأول ══ -->
+      <div class="seller-wrap" id="sellerWrap" style="display: none;">
+                        <a href="seller-register.html" class="hbtn seller-btn">
+                            <div class="hbtn__icon"><i class="fas fa-user-tie"></i></div>
+                            <span>تسجيل كبائع</span>
+                        </a>
+                    </div>
 
             <!-- ══ الصف الثاني: شريط البحث الكامل ══ -->
             <div class="header-row2">
@@ -2016,13 +2101,19 @@
                     <input type="text" placeholder="ابحث عن المنتجات، الماركات، والفئات...">
                 </div>
             </div>
+            
             <!-- ══ نهاية الصف الثاني ══ -->
                <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="فتح القائمة الجانبية">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-
+    <!-- الشعار -->
+                <a href="index.html" class="logo-block">
+                    <img src="images/logo.jpg" alt="Naboo">
+                    <span class="logo-name">Naboo</span>
+                    <span class="logo-sub">Marketplace of Mesopotamia</span>
+                </a>
         </div>
     </header>
 
@@ -2292,7 +2383,7 @@
     </button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ================================================
    نظام إدارة جلسة المستخدم المتكامل
    ================================================ */
@@ -2728,8 +2819,11 @@ function showNotification(message) {
     const toast = document.createElement('div');
     toast.className = 'support-dd';
     toast.style.position = 'fixed';
-    toast.style.bottom = '2rem';
-    toast.style.right = '2rem';
+    toast.style.bottom = 'calc(2rem + env(safe-area-inset-bottom, 0px))';
+    toast.style.right = '1rem';
+    toast.style.left = '1rem';
+    toast.style.maxWidth = '400px';
+    toast.style.margin = '0 auto';
     toast.style.background = 'white';
     toast.style.padding = '1rem 1.5rem';
     toast.style.borderRadius = '0.75rem';
@@ -2754,6 +2848,7 @@ function showNotification(message) {
         setTimeout(() => toast.remove(), 300);
     }, 3000);
 }
+
 
 // =====================================
 // تسجيل الخروج
